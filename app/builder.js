@@ -127,6 +127,7 @@ function setClass(rowid/*fila*/) {
     }
     clean();
     selected_clean();
+    
 }
 
 
