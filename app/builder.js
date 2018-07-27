@@ -104,9 +104,9 @@ function loadNew(mat, prof, au) {
     lista.innerHTML+="<div class='tr-list' onclick='setClass(this.id)' id='"+id+"'></div>";
     var fila = document.getElementById(id);
     fila.innerHTML +=
-    "<div class='td-list c1'>"+mat+"</div>"+
-    "<div class='td-list c2'>"+prof+"</div>"+
-    "<div class='td-list c3'>"+au+"</div>";
+    "<div class='td-list c1 unselectable'>"+mat+"</div>"+
+    "<div class='td-list c2 unselectable'>"+prof+"</div>"+
+    "<div class='td-list c3 unselectable'>"+au+"</div>";
 }
 
 function setClass(rowid/*fila*/) {
