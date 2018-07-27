@@ -13,34 +13,35 @@
 </head>
 <body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
 <div id="overlay" style="border-color: red;" onkeypress="onkey(event)">
-<div id='changer'>
-	<div class="panel">
-		<div class="panel-title unselectable">Ingresa los datos</div>
-		<div class="panel-content">
-			<form action="#">
-				<input type="text" id="materia" class="input-text" placeholder="Materia" /><br><br>
-				<input type="text" id="profesor" class="input-text" placeholder="Profesor" /><br><br>
-				<label style="width:3em;">Edificio</label> <select id="edificio" class="selector"></select>
-				<label style="width:3em;">Aula</label> <select id="aula" class="selector"></select>
-				<br>
-				<input type="submit" onclick='charge()' value="aceptar" class="input-button">
-			</form>
+	<div id='changer'>
+		<div class="panel">
+			<div class="panel-title unselectable">Ingresa los datos</div>
+			<div class="panel-content">
+				<form action="#">
+					<input type="text" id="materia" class="input-text" placeholder="Materia" /><br><br>
+					<input type="text" id="profesor" class="input-text" placeholder="Profesor" /><br><br>
+					<label style="width:3em;">Edificio</label> <select id="edificio" class="selector"></select>
+					<label style="width:3em;">Aula</label> <select id="aula" class="selector"></select>
+					<br>
+					<input type="submit" onclick='charge()' value="aceptar" class="input-button">
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div id="class-list">
-<div class="panel" style="height: 100%; width: 100%;">
-<div class="panel-title unselectable">Materias Ingresadas</div>
-<div class="panel-content" style="height: 100%">
-<div class="lista" id="lista">
-<div class="th-list c1 unselectable">Materia</div>
-<div class="th-list c2 unselectable">Profesor</div>
-<div class="th-list c3 unselectable">Aula</div>
-</div>
-</div>
-</div>
-</div>
+	<div id="class-list">
+		<div class="panel" style="height: 100%; width: 100%;">
+			<div class="panel-title unselectable">Materias Ingresadas</div>
+				<div class="panel-content" style="height: 100%">
+					<div class="lista" id="lista">
+						<div class="th-list c1 unselectable">Materia</div>
+						<div class="th-list c2 unselectable">Profesor</div>
+						<div class="th-list c3 unselectable">Aula</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="body">
 <div class="tabla horario" id="horario">

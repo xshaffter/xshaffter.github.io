@@ -170,10 +170,6 @@ color: white;
 border-left: 2px solid black;
 border-bottom: 2px solid black;
 }
-.td-list > p {
-	max-height: 1em;
-	border: none;
-}
 .tr-list {
 grid-column-start: 1;
 grid-column-end: 4;

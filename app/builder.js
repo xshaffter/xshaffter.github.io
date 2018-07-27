@@ -23,10 +23,13 @@ $(function(event) {
                     if(columnas[0] == '') {
                         continue;
                     }
+                    console.log("materia:"+columnas[0]);
+                    console.log("profesor:"+columnas[1]);
+                    console.log("aula:"+columnas[2]);
                     fila.innerHTML +=
-                    "<div class='td-list c1 unselectable'><p>"+columnas[0]+"</p></div>"+
-                    "<div class='td-list c2 unselectable'><p>"+columnas[1]+"</p></div>"+
-                    "<div class='td-list c3 unselectable'><p>"+columnas[2]+"</p></div>";
+                    "<div class='td-list c1 unselectable'>"+columnas[0]+"</div>"+
+                    "<div class='td-list c2 unselectable'>"+columnas[1]+"</div>"+
+                    "<div class='td-list c3 unselectable'>"+columnas[2]+"</div>";
                     if(filas[i+1]) {
                         lista.innerHTML+="<div class='tr-list' onclick='setClass(this.id)' id='row"+(++filaActual)+"'></div>";
                     }
@@ -34,6 +37,7 @@ $(function(event) {
             }
         }
     }
+
 
     function loadAulas() {
         var edificios = 83;
@@ -63,8 +67,6 @@ $(function(event) {
     loadList();
     loadCells();
 });
-
-
 
 function charge() {
     if(materia.value=="") {
