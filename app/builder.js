@@ -52,7 +52,6 @@ $(function(event) {
     }
     loadAulas();
     loadList();
-    loadCells();
 });
 
 function charge() {
