@@ -50,19 +50,6 @@ $(function(event) {
             document.getElementById('aula').innerHTML += "<option>"+aula+"</option>"
         }
     }
-
-    function loadCells() {
-        var row = 2;
-        if(printedCells<1){
-            for (var i=1; i <= 72; i++) {
-                var cell = new Cell('cell'+i);
-                document.getElementById('horario').innerHTML += cell.toHTML(row);
-                if(i%6==0) {
-                    row++;
-                }
-            }
-        }
-    }
     loadAulas();
     loadList();
     loadCells();
@@ -127,7 +114,6 @@ function setClass(rowid/*fila*/) {
     }
     clean();
     selected_clean();
-    
 }
 
 
