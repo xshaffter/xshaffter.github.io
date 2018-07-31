@@ -13,10 +13,11 @@
 		<link rel="stylesheet" href="css/ids.css">
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
-
-		<div id="downloader"></div>
-		<input type="file" id="loader"/><br>
-		<button id="load" onclick="readJSON()">load</button>
+		<div class="box">
+			<div id="downloader"></div>
+			<input type="file" id="loader"/><br>
+			<button id="load" onclick="readJSON()">load</button>
+		</div>
 
 		<div id="overlay" style="border-color: red;" onkeypress="onkey(event)">
 			<div id='changer'>

@@ -270,3 +270,7 @@ min-height: 2em;
 min-width: 50%;
 max-width: 90%;
 }
+.box {
+	height: 3em;
+	width:100%;
+}
