@@ -32,7 +32,3 @@ grid-row-start: 1;
 grid-row-end: 4;
 animation-name: displayList;
 }
-#downloader {
-	height: 3em;
-	width:100%;
-}
