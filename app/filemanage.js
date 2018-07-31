@@ -67,7 +67,8 @@ function assignData(celdas) {
 }
 function downloadJSON(filename) {
   var dwnldr = document.getElementById('downloader');
-  var element = dwnldr.createElement('a');
+  var element = document.createElement('a');
+  dwnldr.append(element);
   element.setAttribute('href', createJSON());
   element.setAttribute('download', filename);
   element.style.display = 'none';
