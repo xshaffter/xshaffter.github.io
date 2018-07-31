@@ -14,15 +14,18 @@
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
 		<div id="main-menu">
-			<div class="titulo">Menu Principal</div>
-			<div onclick="downloadJSON(prompt('cual quiere que sea el nombre del archivo?')+'.json')" class="unselectable elemento">Guardar</div><br>
+			<div class="titulo unselectable">Menu Principal</div>
+			<div onclick="downloadJSON(prompt('cual quiere que sea el nombre del archivo?')+'.json')" class="unselectable elemento">Guardar</div>
 			<div class="unselectable elemento" onclick="document.getElementById('archivo').click()">Cargar</div>
+			<div class="unselectable elemento" onclick="displayHelp()">Ayuda(WIP)</div>
 		</div>
 
-		<div id="overlay" style="border-color: red;" onkeypress="onkey(event)">
+		<div id="overlay" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
-					<div class="panel-title unselectable">Ingresa los datos</div>
+					<div class="panel-title unselectable">
+						Ingresa los datos
+					</div>
 
 					<div class="panel-content">
 						<form action="#">
@@ -34,34 +37,24 @@
 							<input type="submit" onclick='charge()' value="aceptar" class="input-button">
 						</form>
 					</div>
-
 				</div>
-
 			</div>
 
 
 			<div id="class-list">
 				<div class="panel" style="height: 100%; width: 100%;">
-					<div class="panel-title unselectable">Materias Ingresadas</div>
-
-						<div class="panel-content" style="height: 100%">
-							<div class="lista" id="lista">
-								<div class="th-list c1 unselectable">Materia</div>
-
-								<div class="th-list c2 unselectable">Profesor</div>
-
-								<div class="th-list c3 unselectable">Aula</div>
-
-							</div>
-
-						</div>
-
+					<div class="panel-title unselectable">
+						Materias Ingresadas
 					</div>
-
+					<div class="panel-content" style="height: 100%">
+						<div class="lista" id="lista">
+							<div class="th-list c1 unselectable">Materia</div>
+							<div class="th-list c2 unselectable">Profesor</div>
+							<div class="th-list c3 unselectable">Aula</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
-
 		</div>
 
 		<div class="body">
@@ -437,6 +430,24 @@
 
 		<div id="load-structure" style="display: none;">
 			<input type="file" id="archivo" onchange="readJSON()" />
+		</div>
+
+		<div id="help-display">
+			<div class="panel">
+				<div class="panel-title unselectable">
+					Informacion
+				</div>
+				<div class="panel-content unselectable">
+					seleccion. <br>
+					click: selecciona una unica celda para modificar. <br>
+					ctrl+click: añade una celda a la lista de celdas seleccionadas para modificar. <br>
+					shift+click: añade todas las celdas comprendidas entre la ultima celda seleccionada, y la que se le dio click (incluida esta misma). <br> <br>
+
+					insert: abre el formulario para modificar las celdas seleccionadas con la clase que iria en ese horario. <br>
+					escape: retrocede a la pantalla anterior (del formulario al horario, del horario al menu). <br>
+					backspace: limpia las celdas seleccionadas.
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

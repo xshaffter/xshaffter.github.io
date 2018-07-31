@@ -143,6 +143,8 @@ function setClass(rowid/*fila*/) {
         }
 
         fr.readAsText(files.item(0));
+        menu = document.getElementById('main-menu');
+        menu.style.display = "none";
     };
 
 function display() {
@@ -206,17 +208,24 @@ function onrelease(e) {
             shiftpressed = false;
             break;
         case 27:
-            if(document.getElementById('overlay').style.display == "none") {
-                if(document.getElementById('main-menu').style.display == "block") {
-                    document.getElementById('main-menu').style.display = "none";
+            var menu = document.getElementById('main-menu');
+            var helper = document.getElementById('help-display');
+            if(document.getElementById('overlay').style.display != "grid") {
+                if(helper.style.display != "none") {
+                    helper.style.display = "none";
+                    var horario = document.getElementById('horario');
+                    horario.style.display = "grid";
+                }
+                if(menu.style.display != "none") {
+                    menu.style.display = "none";
                 } else {
-                    document.getElementById('main-menu').style.display = "block";
+                    menu.style.display = "block";
                 }
             } else {
                 clean();
             }
     }
-    console.log("up: "+key)
+    console.log("up: "+key);
 }
 function clean() {
     materia.value = "";
@@ -227,4 +236,13 @@ function clean() {
 }
 function createCookie(name, value) {
     document.cookie = (escape(name) + "=" + escape(value) +"; path=/");
+}
+
+function displayHelp() {
+    menu = document.getElementById('main-menu');
+    menu.style.display = "none";
+    var helper = document.getElementById('help-display');
+    var horario = document.getElementById('horario');
+    horario.style.display = "none";
+    helper.style.display="flex";
 }

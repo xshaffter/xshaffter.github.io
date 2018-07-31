@@ -76,4 +76,6 @@ function downloadJSON(filename) {
   element.click();
 
   document.body.removeChild(element);
+  menu = document.getElementById('main-menu');
+  menu.style.display = "none";
 }
