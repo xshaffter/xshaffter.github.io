@@ -15,7 +15,7 @@
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
 		<div id="main-menu">
 			<div class="titulo unselectable">Menu Principal</div>
-			<div onclick="downloadJSON(prompt('cual quiere que sea el nombre del archivo?')+'.json')" class="unselectable elemento">Guardar</div>
+			<div onclick="downloadJSON(prompt('ingrese el nombre del archivo'))" class="unselectable elemento">Guardar</div>
 			<div class="unselectable elemento" onclick="document.getElementById('archivo').click()">Cargar</div>
 			<div class="unselectable elemento" onclick="displayHelp()">Ayuda(WIP)</div>
 		</div>

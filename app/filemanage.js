@@ -66,17 +66,11 @@ function assignData(celdas) {
 	};
 }
 function downloadJSON(filename) {
-  var dwnldr = document.getElementById('downloader');
-  var element = document.createElement('a');
-  dwnldr.append(element);
-  element.setAttribute('href', createJSON());
-  element.setAttribute('download', filename);
-  element.style.display = 'none';
-  document.body.appendChild(element);
+  document.getElementById('downloader').innerHTML = '<a href="data:' + createJSON() + '" download="'+filename+'.json" id="descargar"></a>';
+  var element = document.getElementById('descargar');
 
   element.click();
 
-  document.body.removeChild(element);
   menu = document.getElementById('main-menu');
   menu.style.display = "none";
 }

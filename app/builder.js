@@ -243,6 +243,7 @@ function displayHelp() {
     menu.style.display = "none";
     var helper = document.getElementById('help-display');
     var horario = document.getElementById('horario');
+
     horario.style.display = "none";
     helper.style.display="flex";
 }
