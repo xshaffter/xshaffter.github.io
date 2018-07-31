@@ -36,8 +36,8 @@ function loadJSON (json) {
 }
 function separateCells (json) {
 	var text = json.replace(/,{/g,'');
-	var text = json.replace(/'{/g,'');
-	var text = json.replace(/ '{/g,'');
+	text = json.replace(/'{/g,'');
+	text = json.replace(/ '{/g,'');
 	text = text.replace(/{/g,'');
 	var celdas = text.split('},');
 	return celdas;
@@ -54,6 +54,9 @@ function assignData(celdas) {
 			var datos = listaDatos[x].split(':');
 			var name = datos[0];
 			var value = datos[1];
+			if(name=='}' || value="}") {
+				continue;
+			}
 			if(name=="cell") {
 				celdaActual = document.getElementById(value);
 			} else {
