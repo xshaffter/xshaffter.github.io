@@ -29,7 +29,6 @@ class Cell {
 		    		var min = Math.min(desdeCell.number, hastaCell.number);
 		    		var max = Math.max(desdeCell.number, hastaCell.number);;
 		    		for (var i = min; i <= max; i++) {
-		    			console.log(i);
 		    			selectCell('cell'+i);
 		    		}
 		    	}

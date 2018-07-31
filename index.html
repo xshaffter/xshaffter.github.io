@@ -5,6 +5,7 @@
 		<script src="app/jquery.js"></script>
 		<script src="app/cells.js"></script>
 		<script src="app/builder.js"></script>
+		<script src="app/filemanage.js"></script>
 
 		<title>Creador de horarios</title>
 		<link rel="stylesheet" href="css/estilos.css">
@@ -12,6 +13,11 @@
 		<link rel="stylesheet" href="css/ids.css">
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
+
+		<div id="downloader"></div>
+		<input type="file" id="loader"/><br>
+		<button id="load" onclick="readJSON()">load</button>
+
 		<div id="overlay" style="border-color: red;" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
@@ -135,7 +141,7 @@
 			19:00 - 20:00
 			</div>
 
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell1" oncontextmenu="event.preventDefault(); return false;" style="box-shadow: red 0px 0px 10px inset;"><div class="materia"></div>
+			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell1" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
 			<div class="profesor"></div>
 			<div class="aula"></div>
 			</div>
@@ -415,13 +421,15 @@
 			<div class="profesor"></div>
 			<div class="aula"></div>
 			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell71" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
+			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell71" oncontextmenu="event.preventDefault(); return false;">
+				<div class="materia"></div>
+				<div class="profesor"></div>
+				<div class="aula"></div>
 			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell72" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
+			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell72" oncontextmenu="event.preventDefault(); return false;">
+				<div class="materia"></div>
+				<div class="profesor"></div>
+				<div class="aula"></div>
 			</div>
 			</div>
 		</div>

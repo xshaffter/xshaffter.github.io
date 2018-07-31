@@ -4,7 +4,7 @@ var filaActual = 1;
 var selectedCells = "";
 var printedCells = 0;
 var ultimaSeleccionada = "";
-$(function(event) { 
+$(function(event) {
     var materia = document.getElementById("materia");
     var edificio = document.getElementById("edificio");
     var profesor = document.getElementById("profesor");
@@ -23,9 +23,6 @@ $(function(event) {
                     if(columnas[0] == '') {
                         continue;
                     }
-                    console.log("materia:"+columnas[0]);
-                    console.log("profesor:"+columnas[1]);
-                    console.log("aula:"+columnas[2]);
                     fila.innerHTML +=
                     "<div class='td-list c1 unselectable'>"+columnas[0]+"</div>"+
                     "<div class='td-list c2 unselectable'>"+columnas[1]+"</div>"+
@@ -45,13 +42,14 @@ $(function(event) {
         for (var edificio = 65 ; edificio <= edificios ; edificio++) {
             document.getElementById('edificio').innerHTML += "<option>"+String.fromCharCode(edificio)+"</option>"
         }
-
+        document.getElementById('edificio').innerHTML += "<option>Gimnasio</option>"
         for (var aula = 1; aula <= aulas; aula++) {
             document.getElementById('aula').innerHTML += "<option>"+aula+"</option>"
         }
     }
     loadAulas();
     loadList();
+    write();
 });
 
 function charge() {
@@ -95,6 +93,23 @@ function loadNew(mat, prof, au) {
     "<div class='td-list c3 unselectable'>"+au+"</div>";
 }
 
+function setClass(id, mat, prof, au) {
+    for (var i = ids.length - 1; i >= 0; i--) {
+        if(ids[i]=="") {
+            continue;
+        }
+        var cell = document.getElementById(ids[i]);
+        cell.getElementsByClassName("materia")[0].innerText = materia.innerText;
+        cell.getElementsByClassName("profesor")[0].innerText = profesor.innerText;
+        cell.getElementsByClassName("aula")[0].innerText = aula.innerText;
+        cell.className += ' aula-'+aula.innerText;
+    }
+    clean();
+    selected_clean();
+    write();
+
+}
+
 function setClass(rowid/*fila*/) {
     var ids = selectedCells.split(';');
     var row = document.getElementById(rowid);
@@ -113,9 +128,26 @@ function setClass(rowid/*fila*/) {
     }
     clean();
     selected_clean();
+    write();
+
 }
 
+    function readJSON() {
+        var files = document.getElementById('loader').files;
+        if (files.length <= 0) {
+            return false;
+        }
 
+        var fr = new FileReader();
+
+        fr.onload = function(e) {
+            var result = JSON.parse(e.target.result);
+            var formatted = JSON.stringify(result, null, 2);
+            loadJSON(result);
+        }
+
+        fr.readAsText(files.item(0));
+    };
 
 function display() {
     document.getElementById('overlay').style.display = "grid";
