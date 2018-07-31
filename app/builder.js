@@ -49,7 +49,6 @@ $(function(event) {
     }
     loadAulas();
     loadList();
-    write();
 });
 
 function charge() {
@@ -106,7 +105,6 @@ function setClass(id, mat, prof, au) {
     }
     clean();
     selected_clean();
-    write();
 
 }
 
@@ -128,12 +126,10 @@ function setClass(rowid/*fila*/) {
     }
     clean();
     selected_clean();
-    write();
-
 }
 
     function readJSON() {
-        var files = document.getElementById('loader').files;
+        var files = document.getElementById('archivo').files;
         if (files.length <= 0) {
             return false;
         }
@@ -185,11 +181,6 @@ function getCookie(cname) {
 function onkey(e) {
 var key = (e.keyCode ? e.keyCode : e.which);
     switch(key) {
-        case 27:
-        case 192:
-        case 96:
-            clean();
-            break;
         case 8:
             remove_selected();
             break;
@@ -214,6 +205,16 @@ function onrelease(e) {
         case 16:
             shiftpressed = false;
             break;
+        case 27:
+            if(document.getElementById('overlay').style.display == "none") {
+                if(document.getElementById('main-menu').style.display == "block") {
+                    document.getElementById('main-menu').style.display = "none";
+                } else {
+                    document.getElementById('main-menu').style.display = "block";
+                }
+            } else {
+                clean();
+            }
     }
     console.log("up: "+key)
 }

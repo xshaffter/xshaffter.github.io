@@ -13,10 +13,10 @@
 		<link rel="stylesheet" href="css/ids.css">
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
-		<div class="box">
-			<div id="downloader"></div>
-			<input type="file" id="loader"/><br>
-			<button id="load" onclick="readJSON()">load</button>
+		<div id="main-menu">
+			<div class="titulo">Menu Principal</div>
+			<div onclick="downloadJSON(prompt('cual quiere que sea el nombre del archivo?')+'.json')" class="unselectable elemento">Guardar</div><br>
+			<div class="unselectable elemento" onclick="document.getElementById('archivo').click()">Cargar</div>
 		</div>
 
 		<div id="overlay" style="border-color: red;" onkeypress="onkey(event)">
@@ -433,6 +433,10 @@
 				<div class="aula"></div>
 			</div>
 			</div>
+		</div>
+
+		<div id="load-structure" style="display: none;">
+			<input type="file" id="archivo" onchange="readJSON()" />
 		</div>
 	</body>
 </html>

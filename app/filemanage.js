@@ -1,8 +1,3 @@
-function write() {
-	var data = createJSON();
-	var downloader = document.getElementById('downloader');
-	downloader.innerHTML = '<a href="data:' + data + '" download="data.json">guardar en JSON</a>';
-}
 function createJSON() {
 	var text = "";
 	for (var i = 1; i < 72; i++) {
@@ -54,7 +49,7 @@ function assignData(celdas) {
 			var datos = listaDatos[x].split(':');
 			var name = datos[0];
 			var value = datos[1];
-			if(name=='}' || value="}") {
+			if(name=='}' || value=="}") {
 				continue;
 			}
 			if(name=="cell") {
@@ -69,4 +64,16 @@ function assignData(celdas) {
 			}
 		};
 	};
+}
+function downloadJSON(filename) {
+  var dwnldr = document.getElementById('downloader');
+  var element = dwnldr.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(createJSON()));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
