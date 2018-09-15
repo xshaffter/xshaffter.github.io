@@ -65,7 +65,7 @@ animation-name: displayList;
 	padding-bottom: 2em;
 	margin-bottom: 1em;
 }
-#help-display {
+#help-display, #log-display, #sign-display {
 	display: none;
 	position: fixed;
 	background-color: rgba(0, 0, 0, 0.7);

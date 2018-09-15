@@ -1,5 +1,6 @@
 var shiftpressed = false;
 var ctrlpressed = false;
+var sesionIniciada = false;
 var filaActual = 1;
 var selectedCells = "";
 var printedCells = 0;
@@ -47,6 +48,22 @@ $(function(event) {
             document.getElementById('aula').innerHTML += "<option>"+aula+"</option>"
         }
     }
+
+
+
+        var menu = document.getElementById('main-menu');
+        if(sesionIniciada==true) {
+            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
+                "<div onclick='hideMenu()' class='unselectable elemento'>Crear Horario</div>"+
+                "<div class='unselectable elemento' onclick='hideMenu(); chargeSched()'>ver Horario</div>"+
+                "<div class='unselectable elemento' onclick='displayHelp()'>Ayuda(WIP)</div>";
+            
+        } else {
+            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
+                            "<div onclick='displayLog()' class='unselectable elemento'>Entrar</div>"+
+                            "<div onclick='displaySignUp()' class='unselectable elemento'>Registrarse</div>";
+        }
+
     loadAulas();
     loadList();
 });
@@ -208,22 +225,7 @@ function onrelease(e) {
             shiftpressed = false;
             break;
         case 27:
-            var menu = document.getElementById('main-menu');
-            var helper = document.getElementById('help-display');
-            if(document.getElementById('overlay').style.display != "grid") {
-                if(helper.style.display != "none") {
-                    helper.style.display = "none";
-                    var horario = document.getElementById('horario');
-                    horario.style.display = "grid";
-                }
-                if(menu.style.display != "none") {
-                    menu.style.display = "none";
-                } else {
-                    menu.style.display = "block";
-                }
-            } else {
-                clean();
-            }
+            hideMenu();
     }
     console.log("up: "+key);
 }
@@ -246,4 +248,43 @@ function displayHelp() {
 
     horario.style.display = "none";
     helper.style.display="flex";
+}
+function displayLog() {
+    menu = document.getElementById('main-menu');
+    menu.style.display = "none";
+    var helper = document.getElementById('log-display');
+    var horario = document.getElementById('horario');
+
+    horario.style.display = "none";
+    helper.style.display="flex";
+}
+function displaySignUp() {
+    menu = document.getElementById('main-menu');
+    var helper = document.getElementById('sign-display');
+    var horario = document.getElementById('horario');
+
+    menu.style.display = "none";
+    horario.style.display = "none";
+    helper.style.display="flex";
+}
+function hideMenu() {
+
+            var menu = document.getElementById('main-menu');
+            var helper = document.getElementById('help-display');
+            if(document.getElementById('overlay').style.display != "grid") {
+                if(helper.style.display != "none") {
+                    helper.style.display = "none";
+                    var horario = document.getElementById('horario');
+                    horario.style.display = "grid";
+                }
+                if(menu.style.display != "none") {
+                    //if(sesionIniciada==true){
+                        menu.style.display = "none";
+                    //}
+                } else {
+                    menu.style.display = "block";
+                }
+            } else {
+                clean();
+            }
 }

@@ -1,25 +1,25 @@
-<!DOCTYPE html>
+<?php include_once 'php/sesion.php'; ?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="app/jquery.js"></script>
-		<script src="app/cells.js"></script>
-		<script src="app/builder.js"></script>
-		<script src="app/filemanage.js"></script>
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript">
+			function chargeSched() {
+			    var horario = <?php include_once 'php/getHorario.php'; ?>;
+			}
+		</script>
+		<script src="js/cells.js"></script>
+		<script src="js/builder.js"></script>
+		<script src="js/filemanage.js"></script>
 
 		<title>Creador de horarios</title>
 		<link rel="stylesheet" href="css/estilos.css">
 		<link rel="stylesheet" href="css/estilos2.css">
 		<link rel="stylesheet" href="css/ids.css">
+
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
-		<div id="main-menu">
-			<div class="titulo unselectable">Menu Principal</div>
-			<div onclick="downloadJSON(prompt('ingrese el nombre del archivo'))" class="unselectable elemento">Guardar</div>
-			<div class="unselectable elemento" onclick="document.getElementById('archivo').click()">Cargar</div>
-			<div class="unselectable elemento" onclick="displayHelp()">Ayuda(WIP)</div>
-		</div>
-
+		<div id="main-menu"></div>
 		<div id="overlay" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
@@ -432,7 +432,7 @@
 			<input type="file" id="archivo" onchange="readJSON()" />
 			<div id="downloader"></div>
 		</div>
-
+		<?php include_once 'plantillas/login.php'; include_once 'plantillas/signup.php'; ?>
 		<div id="help-display">
 			<div class="panel">
 				<div class="panel-title unselectable">
@@ -450,5 +450,8 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+	        	sesionIniciada = <?php echo isset($_SESSION['ncontrol'])?>;
+		</script>
 	</body>
 </html>
