@@ -8,10 +8,13 @@
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
+	list-style: none;
+	user-select: none;
 }
 
 body{
 	min-width: 700px;
+	transition-delay: 0.3s;
 }
 
 .main-header{
@@ -63,9 +66,85 @@ body{
 
 .slide{
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	padding: 20PX;
 	width: 100%;
 	height: 100vh;
-	min-height: 500px;
+	min-height: 500px;	
+}
+
+.mid-slide{
+	display: flex;
+	padding: 20PX;
+	width: 100%;
+	height: 50vh;
+	min-height: 500px;	
+}
+
+.nav-content{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	border-radius: 10px;
+	padding: 5px 10px 5px 40px;
+}
+
+.item-list-elements a{
+	background: #D54444;
+	margin: 4px;
+	border-radius: 10px;
+	font-family: 'Roboto Slab', serif;
+	display: block;
+	padding: 5px;
+}
+
+.flex-row-item{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.flex-column-item{
+	display: flex;
+	flex-direction: column;
+}
+
+.session-form{
+	width: 50%;
+	height: inherit;
+	align-items: center;
+	justify-content: center;
+}
+
+.session-form:target{
+	background: #F5DDDD;
+}
+
+.session-form input[type="text"], .session-form input[type="password"]{
+	border: 1px solid #000;
+	margin: 15px;
+	width: 50%;
+	height: 60px;
+}
+
+.session-form input[type="submit"]{
+	background: #000;
+	border-radius: 10px;
+	border: 1px solid #000;
+	margin: 15px;
+	width: 50%;
+	height: 60px;
+}
+
+
+.footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.form-title{
+	color: #000;
 }
