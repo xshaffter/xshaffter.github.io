@@ -2,18 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script type="text/javascript">
-		</script>
 		<script src="js/cells.js"></script>
 		<script src="js/builder.js"></script>
 
 		<title>Creador de horarios</title>
 		<link rel="stylesheet" href="css/fonts.css" />
-		<link rel="stylesheet" href="css/estilos2.css" />
 		<link rel="stylesheet" href="css/estilos.css" />
 		<link rel="stylesheet" href="css/ids.css" />
 	</head>
-	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
+	<body id="body">
 		<div id="overlay" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
@@ -80,6 +77,7 @@
 				<div class="th unselectable">
 				Sabado
 				</div>
+				<!--(div.thorario.unselectable{$@7:00 - $@2:00}+div.td.unselectable*6>(.materia)(.profesor)(.aula))*13-->
 				<div class="thorario unselectable">7:00 - 8:00</div>
 				<div class="td unselectable">
 					<div class="materia"></div>
