@@ -124,6 +124,7 @@ body{
 	margin: 15px;
 	width: 50%;
 	height: 60px;
+	color: #000;
 }
 
 .session-form input[type="submit"]{
