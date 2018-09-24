@@ -485,27 +485,5 @@
 				</div>
 			</div>
 		</div>
-
-		<?php include_once 'plantillas/login.php'; include_once 'plantillas/signup.php'; ?>
-		<div id="help-display">
-			<div class="panel">
-				<div class="panel-title unselectable">
-					Informacion
-				</div>
-				<div class="panel-content unselectable">
-					seleccion. <br>
-					click: selecciona una unica celda para modificar. <br>
-					ctrl+click: añade una celda a la lista de celdas seleccionadas para modificar. <br>
-					shift+click: añade todas las celdas comprendidas entre la ultima celda seleccionada, y la que se le dio click (incluida esta misma). <br> <br>
-
-					insert: abre el formulario para modificar las celdas seleccionadas con la clase que iria en ese horario. <br>
-					escape: retrocede a la pantalla anterior (del formulario al horario, del horario al menu). <br>
-					backspace: limpia las celdas seleccionadas.
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript">
-	        	sesionIniciada = <?php echo isset($_SESSION['ncontrol'])?>;
-		</script>
 	</body>
 </html>
