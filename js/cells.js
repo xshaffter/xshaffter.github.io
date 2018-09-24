@@ -15,9 +15,9 @@ class Cell {
 	function onMpress(id) {
 	    if(ctrlpressed) {
 	        if(selected(id)) {
-	            diselect(id);
+	            //diselect(id);
 	        } else {
-	            selectCell(id);
+	            //selectCell(id);
 	        }
 	    } else {
 	    	if(shiftpressed) {

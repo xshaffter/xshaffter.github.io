@@ -11,36 +11,7 @@
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;          /* Likely future */
 }
-@-moz-keyframes displayList {
-  0% {
-    position: absolute;
-    left: 100%;
-  }
-  100% {
-    position: absolute;
-    left: 0;
-  }
-}
-@-webkit-keyframes displayList {
-  0% {
-    position: absolute;
-    left: 100%;
-  }
-  100% {
-    position: absolute;
-    left: 0;
-  }
-}
-@-o-keyframes displayList {
-  0% {
-    position: absolute;
-    left: 100%;
-  }
-  100% {
-    position: absolute;
-    left: 0;
-  }
-}
+
 @keyframes displayList {
   0% {
     position: absolute;

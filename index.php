@@ -8,15 +8,12 @@
 			    var horario = <?php include_once 'php/getHorario.php'; ?>;
 			}
 		</script>
-		<script src="js/cells.js"></script>
 		<script src="js/builder.js"></script>
-		<script src="js/filemanage.js"></script>
 
 		<title>Creador de horarios</title>
-		<link rel="stylesheet" href="css/estilos.css">
-		<link rel="stylesheet" href="css/estilos2.css">
-		<link rel="stylesheet" href="css/ids.css">
-
+		<link rel="stylesheet" href="css/fonts.css" />
+		<link rel="stylesheet" href="css/estilos2.css" />
+		<link rel="stylesheet" href="css/ids.css" />
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
 		<div id="main-menu"></div>
