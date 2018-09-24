@@ -51,6 +51,7 @@ window.onload = (function(event) {
 
     function setListeners() {
         var celdas = document.getElementsByClassName('td');
+        var body = document.getElementById('body');
         for (var i = 0; i < celdas.length; i++) {
             celdas[i].addEventListener('click',function(){
                 onMpress(this.id);
@@ -59,6 +60,13 @@ window.onload = (function(event) {
                 event.preventDefault();
             });
         }
+
+        body.addEventListener('keydown',function(event){
+            onkey(event);
+        });
+        body.addEventListener('keyup',function(event){
+            onrelease(event);
+        });
     }
     function setIDS() {
         var celdas = document.getElementsByClassName('td');
@@ -201,7 +209,6 @@ var key = (e.keyCode ? e.keyCode : e.which);
             shiftpressed = true;
             break;
     }
-    console.log("down: "+key);
 }
 function onrelease(e) {
     var key = (e.keyCode ? e.keyCode : e.which);
@@ -215,7 +222,6 @@ function onrelease(e) {
         case 27:
             hideMenu();
     }
-    console.log("up: "+key);
 }
 function clean() {
     materia.value = "";
