@@ -27,6 +27,9 @@
 	background: #fff;
 	transition-duration: .1s;
 }
+.td:active {
+	border: 1px solid orange;
+}
 .thorario {
 	display: flex;
 	justify-content: center;
@@ -59,67 +62,10 @@
 	padding: .2em;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 }
-	.th{
+.th{
 	grid-row: 1;
 	font-weight: bold;
-	}
-	.r1 {
-	grid-row: 1;
-	}
-	.r2 {
-	grid-row: 2;
-	}
-	.r3 {
-	grid-row: 3;
-	}
-	.r4 {
-	grid-row: 4;
-	}
-	.r5 {
-	grid-row: 5;
-	}
-	.r6 {
-	grid-row: 6;
-	}
-	.r7 {
-	grid-row: 7;
-	}
-	.r8 {
-	grid-row: 8;
-	}
-	.r9 {
-	grid-row: 9;
-	}
-	.r10 {
-	grid-row: 10;
-	}
-	.r11 {
-	grid-row: 11;
-	}
-	.r12 {
-	grid-row: 12;
-	}
-	.c1 {
-	grid-column: 1;
-	}
-	.c2 {
-	grid-column: 2;
-	}
-	.c3 {
-	grid-column: 3;
-	}
-	.c4 {
-	grid-column: 4;
-	}
-	.c5 {
-	grid-column: 5;
-	}
-	.c6 {
-	grid-column: 6;
-	}
-	.c7 {
-	grid-column: 7;
-	}
+}
 .profesor {
 	display: flex;
 	flex-direction: column;
@@ -223,8 +169,9 @@
 .desconocido {
 	background-color: white;
 }
-
-
+.unselectable {
+  user-select: none;
+}
 .panel {
 	width: 80%;
 	display: block;

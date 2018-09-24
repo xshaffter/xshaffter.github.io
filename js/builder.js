@@ -5,7 +5,7 @@ var filaActual = 1;
 var selectedCells = "";
 var printedCells = 0;
 var ultimaSeleccionada = "";
-$(function(event) {
+window.onload = (function(event) {
     var materia = document.getElementById("materia");
     var edificio = document.getElementById("edificio");
     var profesor = document.getElementById("profesor");
@@ -49,23 +49,29 @@ $(function(event) {
         }
     }
 
-
-
-        var menu = document.getElementById('main-menu');
-        if(sesionIniciada==true) {
-            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
-                "<div onclick='hideMenu()' class='unselectable elemento'>Crear Horario</div>"+
-                "<div class='unselectable elemento' onclick='hideMenu(); chargeSched()'>ver Horario</div>"+
-                "<div class='unselectable elemento' onclick='displayHelp()'>Ayuda(WIP)</div>";
-            
-        } else {
-            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
-                            "<div onclick='displayLog()' class='unselectable elemento'>Entrar</div>"+
-                            "<div onclick='displaySignUp()' class='unselectable elemento'>Registrarse</div>";
+    function setListeners() {
+        var celdas = document.getElementsByClassName('td');
+        for (var i = 0; i < celdas.length; i++) {
+            celdas[i].addEventListener('click',function(){
+                onMpress(this.id);
+            });
+            celdas[i].addEventListener('oncontextmenu',function(){
+                event.preventDefault();
+            });
         }
+    }
+    function setIDS() {
+        var celdas = document.getElementsByClassName('td');
+        for (var i = 0; i < celdas.length; i++) {
+            var x = i+1
+            celdas[i].id = 'cell'+x;
+        }
+    }
 
     loadAulas();
     loadList();
+    setIDS()
+    setListeners();
 });
 
 function charge() {
@@ -99,6 +105,7 @@ function charge() {
     clean();
     selected_clean();
 }
+
 function loadNew(mat, prof, au) {
     var id = 'row'+(++filaActual);
     lista.innerHTML+="<div class='tr-list' onclick='setClass(this.id)' id='"+id+"'></div>";
@@ -144,25 +151,6 @@ function setClass(rowid/*fila*/) {
     clean();
     selected_clean();
 }
-
-    function readJSON() {
-        var files = document.getElementById('archivo').files;
-        if (files.length <= 0) {
-            return false;
-        }
-
-        var fr = new FileReader();
-
-        fr.onload = function(e) {
-            var result = JSON.parse(e.target.result);
-            var formatted = JSON.stringify(result, null, 2);
-            loadJSON(result);
-        }
-
-        fr.readAsText(files.item(0));
-        menu = document.getElementById('main-menu');
-        menu.style.display = "none";
-    };
 
 function display() {
     document.getElementById('overlay').style.display = "grid";

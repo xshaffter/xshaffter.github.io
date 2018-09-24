@@ -2,21 +2,18 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="js/jquery.js"></script>
 		<script type="text/javascript">
-			function chargeSched() {
-			    var horario = <?php include_once 'php/getHorario.php'; ?>;
-			}
 		</script>
+		<script src="js/cells.js"></script>
 		<script src="js/builder.js"></script>
 
 		<title>Creador de horarios</title>
 		<link rel="stylesheet" href="css/fonts.css" />
 		<link rel="stylesheet" href="css/estilos2.css" />
+		<link rel="stylesheet" href="css/estilos.css" />
 		<link rel="stylesheet" href="css/ids.css" />
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
-		<div id="main-menu"></div>
 		<div id="overlay" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
@@ -55,380 +52,440 @@
 		</div>
 
 		<div class="body">
-		<div class="tabla horario" id="horario">
-			<div class="th grupo" onclick="changeGroup()" id="grupo">
-			Grupo A
-			</div>
+			<div class="tabla horario" id="horario">
+				<div class="th grupo unselectable" onclick="changeGroup()" id="grupo">
+				Grupo A
+				</div>
 
-			<div class="th">
-			Lunes
-			</div>
+				<div class="th unselectable">
+				Lunes
+				</div>
 
-			<div class="th">
-			Martes
-			</div>
+				<div class="th unselectable">
+				Martes
+				</div>
 
-			<div class="th">
-			Miercoles
-			</div>
+				<div class="th unselectable">
+				Miercoles
+				</div>
 
-			<div class="th">
-			Jueves
-			</div>
+				<div class="th unselectable">
+				Jueves
+				</div>
 
-			<div class="th">
-			Viernes
-			</div>
+				<div class="th unselectable">
+				Viernes
+				</div>
 
-			<div class="th">
-			Sabado
-			</div>
-
-			<div class="thorario c1 r2">
-			08:00 - 09:00
-			</div>
-
-			<div class="thorario c1 r3">
-			09:00 - 10:00
-			</div>
-
-			<div class="thorario c1 r4">
-			10:00 - 11:00
-			</div>
-
-			<div class="thorario c1 r5">
-			11:00 - 12:00
-			</div>
-
-			<div class="thorario c1 r6">
-			12:00 - 13:00
-			</div>
-
-			<div class="thorario c1 r7">
-			13:00 - 14:00
-			</div>
-
-			<div class="thorario c1 r8">
-			14:00 - 15:00
-			</div>
-
-			<div class="thorario c1 r9">
-			15:00 - 16:00
-			</div>
-
-			<div class="thorario c1 r10">
-			16:00 - 17:00
-			</div>
-
-			<div class="thorario c1 r11">
-			17:00 - 18:00
-			</div>
-
-			<div class="thorario c1 r12">
-			18:00 - 19:00
-			</div>
-
-			<div class="thorario c1 r13">
-			19:00 - 20:00
-			</div>
-
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell1" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell2" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell3" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell4" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell5" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r2 td unselectable" id="cell6" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell7" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell8" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell9" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell10" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell11" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r3 td unselectable" id="cell12" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell13" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell14" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell15" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell16" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell17" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell18" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell19" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell20" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell21" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell22" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell23" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell24" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell25" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell26" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell27" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell28" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell29" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell30" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell31" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell32" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell33" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell34" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell35" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell36" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell37" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell38" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell39" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell40" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell41" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell42" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell43" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell44" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell45" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell46" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell47" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell48" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell49" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell50" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell51" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell52" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell53" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell54" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell55" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell56" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell57" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell58" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell59" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell60" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell61" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell62" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell63" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell64" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell65" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell66" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell67" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell68" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell69" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell70" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell71" oncontextmenu="event.preventDefault(); return false;">
-				<div class="materia"></div>
-				<div class="profesor"></div>
-				<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell72" oncontextmenu="event.preventDefault(); return false;">
-				<div class="materia"></div>
-				<div class="profesor"></div>
-				<div class="aula"></div>
-			</div>
+				<div class="th unselectable">
+				Sabado
+				</div>
+				<div class="thorario unselectable">7:00 - 8:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">8:00 - 9:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">9:00 - 10:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">10:00 - 11:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">11:00 - 12:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">12:00 - 13:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">13:00 - 14:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">14:00 - 15:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">15:00 - 16:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">16:00 - 17:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">17:00 - 18:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">18:00 - 19:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="thorario unselectable">19:00 - 20:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
 			</div>
 		</div>
 
-		<div id="load-structure" style="display: none;">
-			<input type="file" id="archivo" onchange="readJSON()" />
-			<div id="downloader"></div>
-		</div>
 		<?php include_once 'plantillas/login.php'; include_once 'plantillas/signup.php'; ?>
 		<div id="help-display">
 			<div class="panel">

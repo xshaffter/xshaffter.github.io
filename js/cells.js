@@ -1,5 +1,5 @@
 
-var hoverStyle = "0 0 10px red inset";
+var hoverStyle = "1px solid orange";
 class Cell {
 
 	constructor(id) {
@@ -15,9 +15,9 @@ class Cell {
 	function onMpress(id) {
 	    if(ctrlpressed) {
 	        if(selected(id)) {
-	            //diselect(id);
+	            diselect(id);
 	        } else {
-	            //selectCell(id);
+	            selectCell(id);
 	        }
 	    } else {
 	    	if(shiftpressed) {
@@ -56,7 +56,7 @@ function diselect (id) {
 	if(cell == null) {
 		return;
 	}
-	cell.style.boxShadow = "";
+	cell.style.border = "";
 }
 function selectCell(id) {
 	var cell = document.getElementById(id);
@@ -64,7 +64,7 @@ function selectCell(id) {
 		return;
 	}
 	selectedCells += id+';';
-	cell.style.boxShadow = hoverStyle;
+	cell.style.border = hoverStyle;
 	ultimaSeleccionada = id;
 }
 
