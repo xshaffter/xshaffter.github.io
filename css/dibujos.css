@@ -1,0 +1,13 @@
+.star label {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #f39c12;
+    text-decoration: none;
+    text-align: center;
+    cursor: default;
+}
+.star * {
+    display: inline-block;
+}

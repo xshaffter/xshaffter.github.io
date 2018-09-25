@@ -1,0 +1,28 @@
+body{
+	width: 200px;
+	height: 150px;
+}
+.panel-horario {
+	height: 100%;
+	width: 100%;
+}
+.mini-horario {
+	display: grid;
+	grid-template-columns: 7;
+	grid-template-rows: 15;
+}
+.td, .th, .thorario {
+	min-height: 0 !important;
+}
+.th {
+	background: #444;
+}
+.td[state="inactive"]{
+	background: #666;
+}
+.td[state="active"] {
+	background: green;
+}
+.td[state="selected"] {
+	background: red;
+}

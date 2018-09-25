@@ -43,4 +43,14 @@ class Conexion{
 
 		$sentencia -> execute();
 	}
+	public static function getProfesor($id){
+		$sql = 'select * from maestros where id = :id';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetch();
+		return $resultado;
+	}
 }

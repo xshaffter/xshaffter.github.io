@@ -51,7 +51,7 @@ body{
 }
 
 .call-to-action-button{
-	border-radius: 5px 0 5px 0;
+	border-radius: 5px 5px 5px 5px;
 	background: #D54444;
 	font-family: 'Roboto Slab', serif;
 	font-size: 30px;
@@ -156,7 +156,7 @@ body{
 .foo-info{
 	display: none;
 	position: absolute;
-	bottom: 50px;
+	bottom: 10px;
 	border-radius: 10px;
 	right: 0;
 	width: 200px;
@@ -168,8 +168,17 @@ body{
 	padding: 10px;
 }
 
-.foo-item:hover .foo-info{
+.foo-item:hover .foo-mask, .foo-item:hover .foo-info, .foo-mask:hover .foo-info{
 	display: flex;
+}
+.foo-mask {
+	display: none;
+	position: absolute;
+	bottom: 28px;
+	right: 0;
+	width: 200px;
+	min-height: 200px;
+	background: transparent;
 }
 
 .foo-title{

@@ -4,6 +4,7 @@
 	--profesor-size: 11px;
 	--aula-size: 12px;
 	--min-width: 10em;
+	--footer-height: 45px;
 }
 
 *, *::after, *::before{
@@ -16,6 +17,10 @@
 }
 .body {
 	display: grid;
+	padding-bottom: var(--footer-height);
+}
+.body * {
+	color: black;
 }
 
 .td:hover{
@@ -100,7 +105,7 @@
 	font-size: var(--aula-size);
 }
 .grupo {
-	background: #53004E;
+	background: #7C01A4;
 }
 .lista {
 	display: grid;
@@ -224,4 +229,20 @@
 .box {
 	height: 4em;
 	width:100%;
+}
+.footer {
+	min-height: var(--footer-height); 
+	position: fixed !important;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+}
+.foo-item iframe{
+	max-width: 200px;
+	min-height: 200px;
+}
+.foo-info .foo-info-title {
+	display: flex;
+	position: absolute;
+	bottom: 10;
 }

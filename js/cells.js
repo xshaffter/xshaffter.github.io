@@ -1,17 +1,5 @@
 
 var hoverStyle = "1px solid orange";
-class Cell {
-
-	constructor(id) {
-		this.number = parseInt(id.split('cell')[1]);
-		this.id = id;
-	}
-
-
-	toHTML(row) {
-		return "<div onclick='onMpress(this.id)' class='r"+row+" td unselectable' id='"+this.id+"' oncontextmenu='event.preventDefault(); return false;'><div class='materia'></div><div class='profesor'></div><div class='aula'></div></div>";
-	}
-}
 	function onMpress(id) {
 	    if(ctrlpressed) {
 	        if(selected(id)) {

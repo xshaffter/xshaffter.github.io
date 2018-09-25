@@ -1,11 +1,16 @@
-<?php include_once 'php/sesion.php'; ?><!DOCTYPE html>
+<?php 
+include_once 'php/sesion.php'; 
+include_once 'php/conexion.php';
+Conexion::conectar();
+$profesor = Conexion::getProfesor('01');
+Conexion::desconectar();
+?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="js/cells.js"></script>
-		<script src="js/builder.js"></script>
 
 		<title>Creador de horarios</title>
+		<link rel="stylesheet" href="css/app.css" />
 		<link rel="stylesheet" href="css/fonts.css" />
 		<link rel="stylesheet" href="css/estilos.css" />
 		<link rel="stylesheet" href="css/ids.css" />
@@ -53,31 +58,25 @@
 				<div class="th grupo unselectable" onclick="changeGroup()" id="grupo">
 				Grupo A
 				</div>
-
 				<div class="th unselectable">
 				Lunes
 				</div>
-
 				<div class="th unselectable">
 				Martes
 				</div>
-
 				<div class="th unselectable">
 				Miercoles
 				</div>
-
 				<div class="th unselectable">
 				Jueves
 				</div>
-
 				<div class="th unselectable">
 				Viernes
 				</div>
-
 				<div class="th unselectable">
 				Sabado
 				</div>
-				<!--(div.thorario.unselectable{$@7:00 - $@2:00}+div.td.unselectable*6>(.materia)(.profesor)(.aula))*13-->
+				<!--(div.thorario.unselectable{$@7:00 - $@2:00}+div.td.unselectable*6>(.materia)(.profesor)(.aula))*14-->
 				<div class="thorario unselectable">7:00 - 8:00</div>
 				<div class="td unselectable">
 					<div class="materia"></div>
@@ -481,7 +480,54 @@
 					<div class="profesor"></div>
 					<div class="aula"></div>
 				</div>
+				<div class="thorario unselectable">20:00 - 21:00</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
+				<div class="td unselectable">
+					<div class="materia"></div>
+					<div class="profesor"></div>
+					<div class="aula"></div>
+				</div>
 			</div>
 		</div>
+
+	<footer class="footer flex-row-item">
+		<div class="foo-item">
+			<div class="foo-title"><?php echo $profesor['nombre'] . $profesor['apellidos']?></div>
+			<div class="foo-mask">
+				<div class="foo-info horario-mini">
+					<div class="foo-info-title">					
+						<iframe src="mini-horario.php?profe=<?php echo $profesor['id'] ?>" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+		<script src="js/cookies.js"></script>
+		<script src="js/cells.js"></script>
+		<script src="js/builder.js"></script>
 	</body>
 </html>
