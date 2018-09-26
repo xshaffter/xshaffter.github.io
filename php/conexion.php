@@ -1,5 +1,6 @@
 <?php 
 include_once 'sesion.php';
+inicializar();
 
 class Conexion{
 	private static $conexion;
@@ -40,6 +41,39 @@ class Conexion{
 		$sentencia ->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
 		$sentencia ->bindParam(':password',$newPass,PDO::PARAM_STR);
 		$sentencia ->bindParam(':carrera',$carrera,PDO::PARAM_STR);
+
+		$sentencia -> execute();
+	}
+	public static function getProfesor($id){
+		$sql = 'select * from maestros where id = :id';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetch();
+		return $resultado;
+	}
+	public static function getHorario($id){
+		$sql = 'select * from horarios where id = :id';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetch();
+		return $resultado;
+	}
+
+	public static function addHorario($aula,$materia, $id, $capacidad, $carrera, $horario) {
+		$sql = 'insert into horarios(aula,materia,maestro,capacidad,carrera, horario) values(:aula,:materia, :id, :capacidad, :carrera, :horario)';
+		$sentencia = self::$conexion->prepare($sql);
+		$sentencia ->bindParam(':aula',$aula,PDO::PARAM_STR);
+		$sentencia ->bindParam(':materia',$materia,PDO::PARAM_STR);
+		$sentencia ->bindParam(':id',$id,PDO::PARAM_STR);
+		$sentencia ->bindParam(':capacidad',$capacidad,PDO::PARAM_STR);
+		$sentencia ->bindParam(':carrera',$carrera,PDO::PARAM_STR);
+		$sentencia ->bindParam(':horario',$horario,PDO::PARAM_STR);
 
 		$sentencia -> execute();
 	}

@@ -1,12 +1,54 @@
-<?php include_once 'php/sesion.php'; ?><!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<script src="js/jquery.js"></script>
-		<script type="text/javascript">
-			function chargeSched() {
-			    var horario = <?php include_once 'php/getHorario.php'; ?>;
+<?php
+include_once 'php/sesion.php';
+inicializar();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Asistente de horarios</title>
+	<link rel="stylesheet" href="css/app.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto.Slab:700" rel="stylesheet" />
+</head>
+<body>
+	<header class="main-header">
+		
+		<nav class="nav-content">
+			<ul class="item-list flex-row-item">
+				<?php 
+					if(!loged()) {
+						echo "<li class='item-list-elements'><a href='#login'>Iniciar Sesion</a></li>".
+						"<li class='item-list-elements'><a href='#signup'>Registrase</a></li>";
+					} else {
+						echo "<li class='item-list-elements'><a href='php/logout.php'>Cerrar Sesion</a></li>";
+					}
+
+				?>
+			</ul>
+		</nav>
+
+		<figure class="background-figure">
+			<img src="src/main-background.jpg" alt="" class="background-image" />
+		</figure>
+
+		<hgroup>
+			<h1 class="main-title">Asistente de horarios </h1>
+			<h2 class="sub-title">Personaliza tus propios horarios!</h2>
+		</hgroup>
+			<a href="<?php echo isset($_SESSION['nombre'])? '#sched-form':'horario-alumno.php' ?>" class="call-to-action-button">
+				Empieza Ahora!
+			</a>
+	</header>	
+
+	<section class="mid-slide">
+		<?php 
+			if(!loged()) {
+				include_once 'plantillas/login-form.php';
+				include_once 'plantillas/signup-form.php';
+			} else {
+				include_once 'plantillas/new-horario-form.php';
 			}
+<<<<<<< HEAD
 		</script>
 		<script src="js/cells.js"></script>
 		<script src="js/builder.js"></script>
@@ -202,256 +244,39 @@
 			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell17" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
 			<div class="profesor"></div>
 			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r4 td unselectable" id="cell18" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell19" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell20" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell21" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell22" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell23" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r5 td unselectable" id="cell24" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell25" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell26" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell27" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell28" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell29" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r6 td unselectable" id="cell30" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell31" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell32" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell33" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell34" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell35" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r7 td unselectable" id="cell36" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell37" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell38" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell39" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell40" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell41" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r8 td unselectable" id="cell42" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell43" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell44" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell45" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell46" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell47" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r9 td unselectable" id="cell48" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell49" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell50" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell51" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell52" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell53" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r10 td unselectable" id="cell54" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell55" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell56" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell57" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell58" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell59" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r11 td unselectable" id="cell60" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell61" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell62" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell63" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell64" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell65" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r12 td unselectable" id="cell66" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell67" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell68" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell69" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell70" oncontextmenu="event.preventDefault(); return false;"><div class="materia"></div>
-			<div class="profesor"></div>
-			<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell71" oncontextmenu="event.preventDefault(); return false;">
-				<div class="materia"></div>
-				<div class="profesor"></div>
-				<div class="aula"></div>
-			</div>
-			<div onclick="onMpress(this.id)" class="r13 td unselectable" id="cell72" oncontextmenu="event.preventDefault(); return false;">
-				<div class="materia"></div>
-				<div class="profesor"></div>
-				<div class="aula"></div>
-			</div>
+=======
+		 ?>
+	</section>
+	
+	<footer class="footer flex-row-item">
+		<div class="foo-item">
+			<div class="foo-title">Version</div>
+			<div class="foo-mask">
+				<div class="foo-info">0.4.0</div>
 			</div>
 		</div>
+		<div class="foo-item">
+			<div class="foo-title">Repositorio</div>
+			<div class="foo-mask">
+				<div class="foo-info"><a href="https://www.github.com/xshaffter/xshaffter.github.io">GO GIT</a></div>
+>>>>>>> 6f993e67251214d77eab455041af1f7e51def9b2
+			</div>
+		</div>
+		<div class="foo-item">
+			<div class="foo-title">Arquitecto</div>
+			<div class="foo-mask">
+				<div class="foo-info">Carlos David Sanchez Moreno</div>
+			</div>
+		</div>
+		<div class="foo-item">
+			<div class="foo-title">Programador</div>
+			<div class="foo-mask">
+				<div class="foo-info">Alfredo Antonio Martinez Armendariz</div>
+			</div>
+		</div>
+	</footer>
 
-		<div id="load-structure" style="display: none;">
-			<input type="file" id="archivo" onchange="readJSON()" />
-			<div id="downloader"></div>
-		</div>
-		<?php include_once 'plantillas/login.php'; include_once 'plantillas/signup.php'; ?>
-		<div id="help-display">
-			<div class="panel">
-				<div class="panel-title unselectable">
-					Informacion
-				</div>
-				<div class="panel-content unselectable">
-					seleccion. <br>
-					click: selecciona una unica celda para modificar. <br>
-					ctrl+click: añade una celda a la lista de celdas seleccionadas para modificar. <br>
-					shift+click: añade todas las celdas comprendidas entre la ultima celda seleccionada, y la que se le dio click (incluida esta misma). <br> <br>
 
-					insert: abre el formulario para modificar las celdas seleccionadas con la clase que iria en ese horario. <br>
-					escape: retrocede a la pantalla anterior (del formulario al horario, del horario al menu). <br>
-					backspace: limpia las celdas seleccionadas.
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript">
-	        	sesionIniciada = <?php echo isset($_SESSION['ncontrol'])?>;
-		</script>
-	</body>
+</body>
 </html>
+

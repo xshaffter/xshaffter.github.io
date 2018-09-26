@@ -1,0 +1,10 @@
+
+.td[state="inactive"]{
+	background: white;
+}
+.td[state="active"] {
+	background: green;
+}
+.td[state="selected"] {
+	background: red;
+}

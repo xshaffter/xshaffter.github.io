@@ -1,17 +1,5 @@
 
-var hoverStyle = "0 0 10px red inset";
-class Cell {
-
-	constructor(id) {
-		this.number = parseInt(id.split('cell')[1]);
-		this.id = id;
-	}
-
-
-	toHTML(row) {
-		return "<div onclick='onMpress(this.id)' class='r"+row+" td unselectable' id='"+this.id+"' oncontextmenu='event.preventDefault(); return false;'><div class='materia'></div><div class='profesor'></div><div class='aula'></div></div>";
-	}
-}
+var hoverStyle = "1px solid orange";
 	function onMpress(id) {
 	    if(ctrlpressed) {
 	        if(selected(id)) {
@@ -56,7 +44,7 @@ function diselect (id) {
 	if(cell == null) {
 		return;
 	}
-	cell.style.boxShadow = "";
+	cell.style.border = "";
 }
 function selectCell(id) {
 	var cell = document.getElementById(id);
@@ -64,7 +52,7 @@ function selectCell(id) {
 		return;
 	}
 	selectedCells += id+';';
-	cell.style.boxShadow = hoverStyle;
+	cell.style.border = hoverStyle;
 	ultimaSeleccionada = id;
 }
 

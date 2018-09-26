@@ -6,9 +6,11 @@ $pass = $_POST['password'];
 Conexion::conectar();
 $resultado = Conexion::login($ncontrol, $pass);
 Conexion::desconectar();
-echo $resultado['password'];
+$nombre = $resultado['nombre'];
 if(password_verify($pass, $resultado['password'])){
+	$_SESSION['id'] = $resultado['id'];
 	$_SESSION['ncontrol'] = $ncontrol;
+	$_SESSION['nombre'] = $nombre;
 	$_SESSION['reprobadas'] = $resultado['reprobadas'];
 	redirect('../');
 }

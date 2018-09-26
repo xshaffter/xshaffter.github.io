@@ -1,0 +1,199 @@
+*, *::after, *::before{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	font-size: 16px; 
+	font-family: "robotomedium";
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	list-style: none;
+	user-select: none;
+}
+
+body{
+	min-width: 700px;
+	transition-delay: 0.3s;
+}
+
+.main-header{
+	position: relative;
+	display: flex;	
+	flex-direction:column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	min-height: 500px;
+	overflow: hidden;
+}
+
+.background-figure{
+	position: absolute;
+	z-index: -1;
+}
+
+.main-title, .sub-title, hgroup{
+	cursor: default;
+	display: block;
+	font-size: 80px;
+	background: rgba(0, 0, 0, 0.2);
+	width: 100%;
+	padding: 10px;
+}
+
+.sub-title{
+	font-size: 40px;
+	padding-bottom: 20px;
+}
+
+.call-to-action-button{
+	border-radius: 5px 5px 5px 5px;
+	background: #D54444;
+	font-family: 'Roboto Slab', serif;
+	font-size: 30px;
+	display: block;
+	padding: 30px;
+	margin-top: 20px;
+}
+
+.call-to-action-button:active{
+	transform: scale(1.05);
+}
+
+.slide{
+	display: flex;
+	padding: 20PX;
+	width: 100%;
+	height: 100vh;
+	min-height: 500px;	
+}
+
+.mid-slide{
+	display: flex;
+	padding: 20PX;
+	width: 100%;
+	height: 50vh;
+	min-height: 500px;	
+}
+
+.nav-content{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	border-radius: 10px;
+	padding: 5px 10px 5px 40px;
+}
+
+.item-list-elements a{
+	background: #D54444;
+	margin: 4px;
+	border-radius: 10px;
+	font-family: 'Roboto Slab', serif;
+	display: block;
+	padding: 5px;
+}
+
+.flex-row-item{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.flex-column-item{
+	display: flex;
+	flex-direction: column;
+}
+
+.session-form{
+	width: 50%;
+	height: inherit;
+	align-items: center;
+	justify-content: center;
+}
+
+.session-form:target{
+	background: #F5DDDD;
+}
+
+.session-form input[type="text"], .session-form input[type="password"]{
+	border: 1px solid #000;
+	margin: 15px;
+	width: 50%;
+	height: 60px;
+	color: #000;
+}
+
+.session-form input[type="submit"], .session-form label{
+	background: #000;
+	border-radius: 10px;
+	border: 1px solid #000;
+	margin: 15px;
+	width: 50%;
+	height: 60px;
+}
+.session-form select, .session-form option{
+	background: #fff;
+	color: #000;
+	border: 1px solid #000;
+	margin: 15px;
+	width: 50%;
+	height: 60px;
+}
+.session-form label {
+	margin: -10px;
+	border: 0;
+	border-radius: 0;
+}
+
+.footer{
+	width: 100%;
+	padding: 4px 10px;
+	background: rgba(0, 0, 0, 0.8);
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.form-title{
+	color: #000;
+}
+
+.foo-item{
+	position: relative;
+}
+
+.foo-info{
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	border-radius: 10px;
+	right: 0;
+	width: 200px;
+	min-height: 200px;
+	background: #D54444;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.foo-item:hover .foo-mask, .foo-item:hover .foo-info, .foo-mask:hover .foo-info{
+	display: flex;
+}
+.foo-mask {
+	display: none;
+	position: absolute;
+	bottom: 28px;
+	right: 0;
+	width: 200px;
+	min-height: 200px;
+	background: transparent;
+}
+
+.foo-title{
+	background: #D54444;
+	padding: 5px;
+	margin: 0 10px;
+	border-radius: 5px;
+}

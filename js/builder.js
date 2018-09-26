@@ -5,14 +5,14 @@ var filaActual = 1;
 var selectedCells = "";
 var printedCells = 0;
 var ultimaSeleccionada = "";
-$(function(event) {
+var cookieManager = new CookieManager(new CookieReader(), new CookieWriter());
+window.onload = (function(event) {
     var materia = document.getElementById("materia");
     var edificio = document.getElementById("edificio");
     var profesor = document.getElementById("profesor");
     var aula = document.getElementById("aula");
-
     function loadList() {
-        var data = getCookie('lista');
+        var data = cookieManager.read('lista');
         filas = data.split('|');
         if(filas) {
             var lista = document.getElementById('lista');
@@ -49,23 +49,37 @@ $(function(event) {
         }
     }
 
-
-
-        var menu = document.getElementById('main-menu');
-        if(sesionIniciada==true) {
-            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
-                "<div onclick='hideMenu()' class='unselectable elemento'>Crear Horario</div>"+
-                "<div class='unselectable elemento' onclick='hideMenu(); chargeSched()'>ver Horario</div>"+
-                "<div class='unselectable elemento' onclick='displayHelp()'>Ayuda(WIP)</div>";
-            
-        } else {
-            menu.innerHTML = "<div class='titulo unselectable'>Menu Principal</div>"+
-                            "<div onclick='displayLog()' class='unselectable elemento'>Entrar</div>"+
-                            "<div onclick='displaySignUp()' class='unselectable elemento'>Registrarse</div>";
+    function setListeners() {
+        var celdas = document.getElementsByClassName('td');
+        var body = document.getElementById('body');
+        for (var i = 0; i < celdas.length; i++) {
+            celdas[i].addEventListener('click',function(){
+                onMpress(this.id);
+            });
+            celdas[i].addEventListener('oncontextmenu',function(){
+                event.preventDefault();
+            });
         }
 
+        body.addEventListener('keydown',function(event){
+            onkey(event);
+        });
+        body.addEventListener('keyup',function(event){
+            onrelease(event);
+        });
+    }
+    function setIDS() {
+        var celdas = document.getElementsByClassName('td');
+        for (var i = 0; i < celdas.length; i++) {
+            var x = i+1
+            celdas[i].id = 'cell'+x;
+        }
+    }
+
+    setListeners();
     loadAulas();
     loadList();
+    setIDS()
 });
 
 function charge() {
@@ -76,7 +90,7 @@ function charge() {
     var val = "";
 
     var cookietemp = materia.value+","+profesor.value+","+edificio.value+aula.value+"|";
-    var datos = getCookie('lista');
+    var datos = cookieManager.read('lista');
     if (datos) {
         val+=datos;
     }
@@ -94,11 +108,12 @@ function charge() {
     }
     if(!datos.includes(cookietemp)){
         loadNew(materia.value, profesor.value, edificio.value+aula.value);
-        createCookie('lista', val);
+        cookieManager.write('lista', val);
     }
     clean();
     selected_clean();
 }
+
 function loadNew(mat, prof, au) {
     var id = 'row'+(++filaActual);
     lista.innerHTML+="<div class='tr-list' onclick='setClass(this.id)' id='"+id+"'></div>";
@@ -125,7 +140,7 @@ function setClass(id, mat, prof, au) {
 
 }
 
-function setClass(rowid/*fila*/) {
+function setClass(rowid) {
     var ids = selectedCells.split(';');
     var row = document.getElementById(rowid);
     var materia = row.getElementsByTagName("div")[0];
@@ -145,25 +160,6 @@ function setClass(rowid/*fila*/) {
     selected_clean();
 }
 
-    function readJSON() {
-        var files = document.getElementById('archivo').files;
-        if (files.length <= 0) {
-            return false;
-        }
-
-        var fr = new FileReader();
-
-        fr.onload = function(e) {
-            var result = JSON.parse(e.target.result);
-            var formatted = JSON.stringify(result, null, 2);
-            loadJSON(result);
-        }
-
-        fr.readAsText(files.item(0));
-        menu = document.getElementById('main-menu');
-        menu.style.display = "none";
-    };
-
 function display() {
     document.getElementById('overlay').style.display = "grid";
 }
@@ -180,21 +176,6 @@ function changeGroup() {
 
 function selected(id) {
     return selectedCells.includes(id);
-}
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(unescape(document.cookie));
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
 }
 
 function onkey(e) {
@@ -213,7 +194,6 @@ var key = (e.keyCode ? e.keyCode : e.which);
             shiftpressed = true;
             break;
     }
-    console.log("down: "+key);
 }
 function onrelease(e) {
     var key = (e.keyCode ? e.keyCode : e.which);
@@ -227,7 +207,6 @@ function onrelease(e) {
         case 27:
             hideMenu();
     }
-    console.log("up: "+key);
 }
 function clean() {
     materia.value = "";
@@ -235,37 +214,6 @@ function clean() {
     aula.value = "1";
     edificio.value = "A";
     document.getElementById('overlay').style.display = "none";
-}
-function createCookie(name, value) {
-    document.cookie = (escape(name) + "=" + escape(value) +"; path=/");
-}
-
-function displayHelp() {
-    menu = document.getElementById('main-menu');
-    menu.style.display = "none";
-    var helper = document.getElementById('help-display');
-    var horario = document.getElementById('horario');
-
-    horario.style.display = "none";
-    helper.style.display="flex";
-}
-function displayLog() {
-    menu = document.getElementById('main-menu');
-    menu.style.display = "none";
-    var helper = document.getElementById('log-display');
-    var horario = document.getElementById('horario');
-
-    horario.style.display = "none";
-    helper.style.display="flex";
-}
-function displaySignUp() {
-    menu = document.getElementById('main-menu');
-    var helper = document.getElementById('sign-display');
-    var horario = document.getElementById('horario');
-
-    menu.style.display = "none";
-    horario.style.display = "none";
-    helper.style.display="flex";
 }
 function hideMenu() {
 
