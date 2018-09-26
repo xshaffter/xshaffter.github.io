@@ -1,7 +1,8 @@
 <?php 
 	include_once "php/conexion.php";
 	Conexion::conectar();
-	$profesor = Conexion::getProfesor(isset($_GET['profe'])? $_GET['profe']:'');
+	$horario = Conexion::getHorario($_GET['horario']);
+	$profesor = Conexion::getProfesor($horario['maestro']);
 	Conexion::desconectar();
  ?>
 <!DOCTYPE html>
@@ -125,7 +126,13 @@
 		<div state="inactive" class="td unselectable"></div>
 		<div state="inactive" class="td unselectable"></div>
 	</div>
-	<script>var horario = "<?php echo $profesor['horario'];?>"</script>
-	<script src="js/mini-horario.js"></script>
+	<script src="js/schedule-reader.js"></script>
+	<script src="js/mini-sched.js"></script>
+	<script>
+		var horario = "<?php echo $horario['horario'];?>";
+		var lectorHorario = new InterpreteHorarios(new JSON_ObjInterpreter());
+		console.log(horario);
+
+	</script>
 </body>
 </html>

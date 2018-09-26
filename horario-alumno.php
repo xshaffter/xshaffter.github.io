@@ -2,7 +2,8 @@
 include_once 'php/sesion.php'; 
 include_once 'php/conexion.php';
 Conexion::conectar();
-$profesor = Conexion::getProfesor('01');
+$horario = Conexion::getHorario('03');
+$profesor = Conexion::getProfesor($horario['maestro']);
 Conexion::desconectar();
 ?><!DOCTYPE html>
 <html>
@@ -520,7 +521,7 @@ Conexion::desconectar();
 			<div class="foo-mask">
 				<div class="foo-info horario-mini">
 					<div class="foo-info-title">					
-						<iframe src="mini-horario.php?profe=<?php echo $profesor['id'] ?>" frameborder="0"></iframe>
+						<iframe src="mini-horario.php?horario=<?php echo $horario['id'] ?>" frameborder="0"></iframe>
 					</div>
 				</div>
 			</div>
