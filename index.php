@@ -19,7 +19,7 @@
 
 	</head>
 	<body onkeydown="onkey(event)" id="body" onkeyup="onrelease(event)">
-		<div id="main-menu"></div>
+		<section id="main-menu"></div>
 		<div id="overlay" onkeypress="onkey(event)">
 			<div id='changer'>
 				<div class="panel">
@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<div class="body">
 		<div class="tabla horario" id="horario">

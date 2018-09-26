@@ -1,120 +1,119 @@
 :root{
---legend-color: 1.2em;
---legend-text: 5em;
---profesor-size: 11px;
---aula-size: 12px;
---min-width: 10em;
+	--legend-color: 1.2em;
+	--legend-text: 5em;
+	--profesor-size: 11px;
+	--aula-size: 12px;
+	--min-width: 10em;
 }
 *{
-margin: 0;
-padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .body {
-display: grid;
+	display: grid;
 }
 .square {
-border: 1px solid black;
-width: 1em;
-height: 1em;
+	border: 1px solid black;
+	width: 1em;
+	height: 1em;
 }
 .td {
-display: grid;
-background-color: #111;
+	display: grid;
+	background-color: #111;
 }
 .thorario {
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #A9A9A9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #A9A9A9;
 }
 .th {
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #818181;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #818181;
 }
 .legends {
-grid-template-columns: repeat(10, var(--legend-color) var(--legend-text));
-display: inline-block;
+	grid-template-columns: repeat(10, var(--legend-color) var(--legend-text));
+	display: inline-block;
 
-grid-column: 1;
-grid-row: 2;
+	grid-column: 1;
+	grid-row: 2;
 }
 .horario {
-grid-template-columns: repeat(7, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 }
 .tabla {
-display: grid;
-grid-column: 1;
-grid-row: 1;
+	display: grid;
+
 }
 .th, .td, .thorario {
-min-height: 3em;
-text-align: center;
-padding: .2em;
-text-shadow: 0 0 2px white;
-border: 1px solid black;
+	min-height: 3em;
+	text-align: center;
+	padding: .2em;
+	text-shadow: 0 0 2px white;
+	border: 1px solid black;
 }
 .th{
-grid-row: 1;
-font-weight: bold;
+	grid-row: 1;
+	font-weight: bold;
 }
 .r1 {
-grid-row: 1;
+	grid-row: 1;
 }
 .r2 {
-grid-row: 2;
+	grid-row: 2;
 }
 .r3 {
-grid-row: 3;
+	grid-row: 3;
 }
 .r4 {
-grid-row: 4;
+	grid-row: 4;
 }
 .r5 {
-grid-row: 5;
+	grid-row: 5;
 }
 .r6 {
-grid-row: 6;
+	grid-row: 6;
 }
 .r7 {
-grid-row: 7;
+	grid-row: 7;
 }
 .r8 {
-grid-row: 8;
+	grid-row: 8;
 }
 .r9 {
-grid-row: 9;
+	grid-row: 9;
 }
 .r10 {
-grid-row: 10;
+	grid-row: 10;
 }
 .r11 {
-grid-row: 11;
+	grid-row: 11;
 }
 .r12 {
-grid-row: 12;
+	grid-row: 12;
 }
 .c1 {
-grid-column: 1;
+	grid-column: 1;
 }
 .c2 {
-grid-column: 2;
+	grid-column: 2;
 }
 .c3 {
-grid-column: 3;
+	grid-column: 3;
 }
 .c4 {
-grid-column: 4;
+	grid-column: 4;
 }
 .c5 {
-grid-column: 5;
+	grid-column: 5;
 }
 .c6 {
-grid-column: 6;
+	grid-column: 6;
 }
 .c7 {
-grid-column: 7;
+	grid-column: 7;
 }
 .profesor {
 display: flex;
