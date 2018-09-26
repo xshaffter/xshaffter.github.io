@@ -43,27 +43,10 @@ inicializar();
 	<section class="mid-slide">
 		<?php 
 			if(!loged()) {
-				echo ("<form id='login' action='php/iniciar.php' method='post' enctype='multipart/form-data' class='session-form flex-column-item'>".
-						"<h2 class='form-title'>Inicia sesion!</h2>".
-						"<input type='text' name='ncontrol' placeholder='numero de control' />".
-						"<input type='password' name='password' placeholder='Ingresa tu contraseña' />".
-						"<input type='submit' value='Iniciar Sesion'>".
-					"</form>".
-					"<form id='signup' action='php/registro.php' method='post' enctype='multipart/form-data' class='session-form flex-column-item'>".
-						"<h2 class='form-title'>Registrate, es muy facil!</h2>".
-						"<input type='text' name='ncontrol' placeholder='numero de control' />".
-						"<input type='password' name='password' placeholder='Ingresa tu contraseña' />".
-						"<input type='text' name='confirm' placeholder='Confirma tu clave de registro' />".
-						"<input type='submit' value='Iniciar Sesion'>".
-					"</form>");
+				include_once 'plantillas/login-form.php';
+				include_once 'plantillas/signup-form.php';
 			} else {
-				echo "<form id='sched-form' action='horario-profesor.php' method='post' enctype='multipart/form-data' class='session-form flex-column-item'>".
-		 	"<input type='text' name='aula' placeholder='aula' required='true' />".
-		 	"<input type='text' name='materia' placeholder='materia' required='true' />".
-		 	"<input type='text' name='capacidad' placeholder='capacidad' required='true' />".
-		 	"<input type='text' name='carrera' placeholder='carrera' required='true' />".
-		 	"<input type='submit' value='Iniciar'/>".
-		 "</form>";
+				include_once 'plantillas/new-horario-form.php';
 			}
 		 ?>
 	</section>
@@ -72,7 +55,7 @@ inicializar();
 		<div class="foo-item">
 			<div class="foo-title">Version</div>
 			<div class="foo-mask">
-				<div class="foo-info">0.2.3</div>
+				<div class="foo-info">0.4.0</div>
 			</div>
 		</div>
 		<div class="foo-item">
