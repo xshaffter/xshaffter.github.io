@@ -125,7 +125,7 @@ body{
 	color: #000;
 }
 
-.session-form input[type="submit"], .session-form label{
+.session-form input[type="submit"]{
 	background: #000;
 	border-radius: 10px;
 	border: 1px solid #000;
@@ -133,6 +133,7 @@ body{
 	width: 50%;
 	height: 60px;
 }
+<<<<<<< HEAD
 .session-form select, .session-form option{
 	background: #fff;
 	color: #000;
@@ -154,6 +155,10 @@ body{
 .middle {
 	width: 50% !important;
 }
+=======
+
+
+>>>>>>> parent of 6f993e6... 0.4.1
 .footer{
 	width: 100%;
 	padding: 4px 10px;
