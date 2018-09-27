@@ -45,7 +45,7 @@ class Conexion{
 		$sentencia -> execute();
 	}
 	public static function registroMaestro($ncontrol,$nombre, $apellidos, $password) {
-		$sql = 'insert into usuarios(nombre, apellidos, usuario, password, rango) values(:nombre, :apellidos, :carrera, :ncontrol, :password, 2)';
+		$sql = 'insert into usuarios(nombre, apellidos, usuario, password, rango) values(:nombre, :apellidos, :ncontrol, :password, 2)';
 		$sentencia = self::$conexion->prepare($sql);
 		$newPass = password_hash($password, PASSWORD_DEFAULT);
 		$sentencia ->bindParam(':ncontrol',$ncontrol,PDO::PARAM_STR);

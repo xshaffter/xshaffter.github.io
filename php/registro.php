@@ -1,8 +1,8 @@
 <?php 
 include_once 'conexion.php';
 include_once 'utilidades.php';
-if($_POST['rango']=='alumno'){
-	$ncontrol = $_POST['ncontrol'];
+if($_POST['rango']=='Alumno'){
+	$ncontrol = $_POST['usuario'];
 	$nombre = $_POST['nombres'];
 	$apellidos = $_POST['apellidos'];
 	$password = $_POST['password'];

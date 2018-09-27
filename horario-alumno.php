@@ -2,7 +2,7 @@
 include_once 'php/sesion.php'; 
 include_once 'php/conexion.php';
 Conexion::conectar();
-$horario = Conexion::getHorario('03');
+$horario = Conexion::getHorario('04');
 $profesor = Conexion::getProfesor($horario['maestro']);
 Conexion::desconectar();
 ?><!DOCTYPE html>

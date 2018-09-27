@@ -35,7 +35,7 @@ inicializar();
 			<h1 class="main-title">Asistente de horarios </h1>
 			<h2 class="sub-title">Personaliza tus propios horarios!</h2>
 		</hgroup>
-			<a href="<?php echo isset($_SESSION['nombre'])? '#sched-form':'horario-alumno.php' ?>" class="call-to-action-button">
+			<a href="<?php echo isset($_SESSION['nombre'])? ($_SESSION['rango']==1)? 'horario-alumno.php':'#sched-form':'#login' ?>" class="call-to-action-button">
 				Empieza Ahora!
 			</a>
 	</header>	
