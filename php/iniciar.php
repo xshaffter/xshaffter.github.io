@@ -1,7 +1,6 @@
 <?php 
 include_once 'conexion.php';
 include_once 'utilidades.php';
-try{
 $ncontrol = $_POST['ncontrol'];
 $pass = $_POST['password'];
 Conexion::conectar();
@@ -14,7 +13,4 @@ if(password_verify($pass, $resultado['password'])){
 	$_SESSION['nombre'] = $nombre;
 	$_SESSION['reprobadas'] = $resultado['reprobadas'];
 	redirect('../');
-}
-} catch(Exception $ex) {
-	echo $ex->getMessage();
 }

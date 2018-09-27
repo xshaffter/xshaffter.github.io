@@ -126,17 +126,13 @@
 		<div state="inactive" class="td unselectable"></div>
 		<div state="inactive" class="td unselectable"></div>
 	</div>
-	<script src="js/schedule-reader.js">
-	</script>
-	<script src="js/mini-sched.js">
-	</script>
+	<script src="js/schedule-reader.js"></script>
+	<script src="js/mini-sched.js"></script>
 	<script>
 		var horario = "<?php echo $horario['horario'];?>";
 		var lectorHorario = new InterpreteHorarios(new JSON_ObjInterpreter());
-		var materia = "<?php echo $horario['materia'] ?>";
-		var maestro = "<?php echo $profesor['nombre'].$profesor['apellidos'] ?>";
-		var aula = "<?php echo $horario['aula'] ?>";
-		setValues(materia,maestro,aula);
+		console.log(horario);
+
 	</script>
 </body>
 </html>

@@ -125,7 +125,7 @@ body{
 	color: #000;
 }
 
-.session-form input[type="submit"]{
+.session-form input[type="submit"], .session-form label{
 	background: #000;
 	border-radius: 10px;
 	border: 1px solid #000;
@@ -133,32 +133,20 @@ body{
 	width: 50%;
 	height: 60px;
 }
-<<<<<<< HEAD
 .session-form select, .session-form option{
 	background: #fff;
 	color: #000;
 	border: 1px solid #000;
 	margin: 15px;
-	width: 95%; 
+	width: 50%;
 	height: 60px;
 }
 .session-form label {
-	width: 95%;
-	margin: 15px;
-	margin-left: 5px;
-	margin-bottom: 0;
+	margin: -10px;
+	border: 0;
 	border-radius: 0;
 }
-.sp {
-	margin-left: 5px !important;
-}
-.middle {
-	width: 50% !important;
-}
-=======
 
-
->>>>>>> parent of 6f993e6... 0.4.1
 .footer{
 	width: 100%;
 	padding: 4px 10px;
