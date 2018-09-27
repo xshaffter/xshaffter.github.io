@@ -517,7 +517,7 @@ Conexion::desconectar();
 
 	<footer class="footer flex-row-item">
 		<div class="foo-item">
-			<div class="foo-title"><?php echo $profesor['nombre'] . $profesor['apellidos']?></div>
+			<div class="foo-title"><?php echo $profesor['nombre'] .' '. $profesor['apellidos']?></div>
 			<div class="foo-mask">
 				<div class="foo-info horario-mini">
 					<div class="foo-info-title">					

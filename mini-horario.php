@@ -134,7 +134,7 @@
 		var horario = "<?php echo $horario['horario'];?>";
 		var lectorHorario = new InterpreteHorarios(new JSON_ObjInterpreter());
 		var materia = "<?php echo $horario['materia'] ?>";
-		var maestro = "<?php echo $profesor['nombre'].$profesor['apellidos'] ?>";
+		var maestro = "<?php echo $profesor['nombre'].' '. $profesor['apellidos'] ?>";
 		var aula = "<?php echo $horario['aula'] ?>";
 		setValues(materia,maestro,aula);
 	</script>
