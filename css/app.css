@@ -138,15 +138,22 @@ body{
 	color: #000;
 	border: 1px solid #000;
 	margin: 15px;
-	width: 50%;
+	width: 95%; 
 	height: 60px;
 }
 .session-form label {
-	margin: -10px;
-	border: 0;
+	width: 95%;
+	margin: 15px;
+	margin-left: 5px;
+	margin-bottom: 0;
 	border-radius: 0;
 }
-
+.sp {
+	margin-left: 5px !important;
+}
+.middle {
+	width: 50% !important;
+}
 .footer{
 	width: 100%;
 	padding: 4px 10px;
