@@ -23,7 +23,7 @@ class Conexion{
 	}
 
 	public static function login($ncontrol, $password = ""){
-		$sql = 'select * from alumnos where numero_control = :ncontrol';
+		$sql = 'select * from usuarios where usuario = :ncontrol';
 		$sentencia = self::$conexion->prepare($sql);
 
 		$sentencia->bindParam(':ncontrol', $ncontrol, PDO::PARAM_STR);
@@ -32,8 +32,8 @@ class Conexion{
 		$resultado = $sentencia -> fetch();
 		return $resultado;
 	}
-	public static function registro($ncontrol,$nombre, $apellidos, $password, $carrera = 'ISC') {
-		$sql = 'insert into alumnos values(:ncontrol, :nombre, :apellidos, 0, :password, :carrera)';
+	public static function registroAlumno($ncontrol,$nombre, $apellidos, $password, $carrera = 'ISC') {
+		$sql = 'insert into usuarios(nombre, apellidos, carrera, usuario, password, rango) values(:nombre, :apellidos, :carrera, :ncontrol, :password, 1)';
 		$sentencia = self::$conexion->prepare($sql);
 		$newPass = password_hash($password, PASSWORD_DEFAULT);
 		$sentencia ->bindParam(':ncontrol',$ncontrol,PDO::PARAM_STR);
@@ -44,8 +44,19 @@ class Conexion{
 
 		$sentencia -> execute();
 	}
+	public static function registroMaestro($ncontrol,$nombre, $apellidos, $password) {
+		$sql = 'insert into usuarios(nombre, apellidos, usuario, password, rango) values(:nombre, :apellidos, :carrera, :ncontrol, :password, 2)';
+		$sentencia = self::$conexion->prepare($sql);
+		$newPass = password_hash($password, PASSWORD_DEFAULT);
+		$sentencia ->bindParam(':ncontrol',$ncontrol,PDO::PARAM_STR);
+		$sentencia ->bindParam(':nombre',$nombre,PDO::PARAM_STR);
+		$sentencia ->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
+		$sentencia ->bindParam(':password',$newPass,PDO::PARAM_STR);
+
+		$sentencia -> execute();
+	}
 	public static function getProfesor($id){
-		$sql = 'select * from maestros where id = :id';
+		$sql = 'select * from usuarios where usuario = :id and rango = 2';
 		$sentencia = self::$conexion->prepare($sql);
 
 		$sentencia->bindParam(':id', $id, PDO::PARAM_STR);
@@ -76,5 +87,17 @@ class Conexion{
 		$sentencia ->bindParam(':horario',$horario,PDO::PARAM_STR);
 
 		$sentencia -> execute();
+	}
+
+	public static function getMaterias($semestre, $carrera){
+		$sql = 'select * from materias where semestre = :semestre and carrera = :carrera';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':semestre', $semestre, PDO::PARAM_STR);
+		$sentencia->bindParam(':carrera', $carrera, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetchAll();
+		return $resultado;
 	}
 }
