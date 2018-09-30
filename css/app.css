@@ -185,17 +185,8 @@ body{
 	padding: 10px;
 }
 
-.foo-item:hover .foo-mask, .foo-item:hover .foo-info, .foo-mask:hover .foo-info{
+.foo-item:hover .foo-info{
 	display: flex;
-}
-.foo-info {
-	display: none;
-	position: absolute;
-	bottom: 40px;
-	right: 0;
-	width: 200px;
-	min-height: 200px;
-	background: transparent;
 }
 
 .foo-title{
