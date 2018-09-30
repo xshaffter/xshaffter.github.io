@@ -187,6 +187,7 @@ body{
 
 .foo-item:hover .foo-mask, .foo-item:hover .foo-info, .foo-mask:hover .foo-info{
 	display: flex;
+	top: -90px;
 }
 .foo-mask {
 	display: none;
