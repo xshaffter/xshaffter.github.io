@@ -100,4 +100,22 @@ class Conexion{
 		$resultado = $sentencia -> fetchAll();
 		return $resultado;
 	}
+	public static function getCarreras($escuela){
+		$sql = 'select * from carreras where Escuela = :escuela';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':escuela', $escuela, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetchAll();
+		return $resultado;
+	}
+	public static function getEscuelas(){
+		$sql = 'select * from escuelas';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetchAll();
+		return $resultado;
+	}
 }

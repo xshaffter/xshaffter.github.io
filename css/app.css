@@ -140,6 +140,9 @@ body{
 	margin: 15px;
 	width: 95%; 
 	height: 60px;
+	margin-left: 5px;
+	margin-bottom: 0;
+	border-radius: 0;
 }
 .session-form label {
 	width: 95%;
@@ -147,6 +150,9 @@ body{
 	margin-left: 5px;
 	margin-bottom: 0;
 	border-radius: 0;
+}
+.session-form div {
+	width: 100%;
 }
 .sp {
 	margin-left: 5px !important;
@@ -185,8 +191,17 @@ body{
 	padding: 10px;
 }
 
-.foo-item:hover .foo-info{
+.foo-item:hover .foo-mask, .foo-item:hover .foo-info, .foo-mask:hover .foo-info{
 	display: flex;
+}
+.foo-mask {
+	display: none;
+	position: absolute;
+	bottom: 28px;
+	right: 0;
+	width: 200px;
+	min-height: 200px;
+	background: transparent;
 }
 
 .foo-title{

@@ -4,6 +4,10 @@ include_once 'php/conexion.php';
 Conexion::conectar();
 $horario = Conexion::getHorario('04');
 $profesor = Conexion::getProfesor($horario['maestro']);
+$horario2 = Conexion::getHorario('06');
+$profesor2 = Conexion::getProfesor($horario2['maestro']);
+$horario3 = Conexion::getHorario('07');
+$profesor3 = Conexion::getProfesor($horario3['maestro']);
 Conexion::desconectar();
 ?><!DOCTYPE html>
 <html>
@@ -522,6 +526,26 @@ Conexion::desconectar();
 				<div class="foo-info horario-mini">
 					<div class="foo-info-title">					
 						<iframe src="mini-horario.php?horario=<?php echo $horario['id'] ?>" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foo-item">
+			<div class="foo-title"><?php echo $profesor2['nombre'] .' '. $profesor2['apellidos']?></div>
+			<div class="foo-mask">
+				<div class="foo-info horario-mini">
+					<div class="foo-info-title">					
+						<iframe src="mini-horario.php?horario=<?php echo $horario2['id'] ?>" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foo-item">
+			<div class="foo-title"><?php echo $profesor3['nombre'] .' '. $profesor3['apellidos']?></div>
+			<div class="foo-mask">
+				<div class="foo-info horario-mini">
+					<div class="foo-info-title">					
+						<iframe src="mini-horario.php?horario=<?php echo $horario3['id'] ?>" frameborder="0"></iframe>
 					</div>
 				</div>
 			</div>

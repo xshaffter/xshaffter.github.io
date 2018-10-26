@@ -58,8 +58,5 @@
 		semestre.addEventListener('change',function(event) {
 			ajax();
 		});
-		carrera.addEventListener('change',function(event) {
-			ajax();
-		});
 		ajax();
 	</script>

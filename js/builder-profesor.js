@@ -45,5 +45,6 @@ function onrelease(e,data) {
     switch(key) {
         case 27:
         new JSON_ObjInterpreter().downloadJSON(data);
+        console.log(data);
     }
 }

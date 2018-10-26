@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="css/ids.css">
 
 	</head>
-	<body id="body" onkeyup="onrelease(event, '<?php echo '&id='.$_SESSION['ncontrol'].'&aula='. $_POST['aula'].'&cap='. $_POST['capacidad'].'&materia='.$_POST['materia'].'&carrera='. $_POST['carrera']; ?>')">
+	<body id="body" onkeyup="onrelease(event, '<?php echo '&id='.$_SESSION['usuario'].'&aula='. $_POST['aula'].'&cap='. $_POST['capacidad'].'&materia='.$_POST['materia'].'&carrera='. $_POST['carrera']; ?>')">
 		<div class='body'>
 		<div class="tabla horario" id="horario">
 			<div class="th grupo" id="grupo">
