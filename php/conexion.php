@@ -32,25 +32,27 @@ class Conexion{
 		$resultado = $sentencia -> fetch();
 		return $resultado;
 	}
-	public static function registroAlumno($ncontrol,$nombre, $apellidos, $password, $carrera = 'ISC') {
-		$sql = 'insert into usuarios(nombre, apellidos, carrera, usuario, password, rango) values(:nombre, :apellidos, :carrera, :ncontrol, :password, 1)';
+	public static function registroAlumno($ncontrol,$nombre, $apellidos, $password, $escuela, $carrera) {
+		$sql = 'insert into usuarios(nombre, apellidos, carrera, usuario, password, rango, escuela) values(:nombre, :apellidos, :carrera, :ncontrol, :password, 1, :escuela)';
 		$sentencia = self::$conexion->prepare($sql);
 		$newPass = password_hash($password, PASSWORD_DEFAULT);
 		$sentencia ->bindParam(':ncontrol',$ncontrol,PDO::PARAM_STR);
 		$sentencia ->bindParam(':nombre',$nombre,PDO::PARAM_STR);
 		$sentencia ->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
 		$sentencia ->bindParam(':password',$newPass,PDO::PARAM_STR);
+		$sentencia ->bindParam(':escuela',$escuela,PDO::PARAM_STR);
 		$sentencia ->bindParam(':carrera',$carrera,PDO::PARAM_STR);
 
 		$sentencia -> execute();
 	}
-	public static function registroMaestro($ncontrol,$nombre, $apellidos, $password) {
-		$sql = 'insert into usuarios(nombre, apellidos, usuario, password, rango) values(:nombre, :apellidos, :ncontrol, :password, 2)';
+	public static function registroMaestro($ncontrol,$nombre, $apellidos, $password, $escuela) {
+		$sql = 'insert into usuarios(nombre, apellidos, usuario, password, rango, escuela) values(:nombre, :apellidos, :ncontrol, :password, 2, :escuela)';
 		$sentencia = self::$conexion->prepare($sql);
 		$newPass = password_hash($password, PASSWORD_DEFAULT);
 		$sentencia ->bindParam(':ncontrol',$ncontrol,PDO::PARAM_STR);
 		$sentencia ->bindParam(':nombre',$nombre,PDO::PARAM_STR);
 		$sentencia ->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
+		$sentencia ->bindParam(':escuela',$escuela,PDO::PARAM_STR);
 		$sentencia ->bindParam(':password',$newPass,PDO::PARAM_STR);
 
 		$sentencia -> execute();
@@ -73,6 +75,15 @@ class Conexion{
 
 		$sentencia -> execute();
 		$resultado = $sentencia -> fetch();
+
+		$sql2 = 'select * from materias where id = :id2';
+		$sentencia2 = self::$conexion->prepare($sql2);
+
+		$sentencia2->bindParam(':id2',$resultado['materia'], PDO::PARAM_STR);
+		$sentencia2->execute();
+		$res2 = $sentencia2->fetch();
+
+		$resultado['materiaNombre'] = $res2['materia'];
 		return $resultado;
 	}
 

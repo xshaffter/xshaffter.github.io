@@ -21,7 +21,7 @@ function remover($field) {
 function iniciar_sesion($usuario) {
 
 		$_SESSION['id'] = $usuario['id'];
-		$_SESSION['escuela'] = $usuario['escuela'];
+		$_SESSION['escuela'] = $usuario['Escuela'];
 		$_SESSION['usuario'] = $usuario['usuario'];
 		$_SESSION['rango'] = $usuario['rango'];
 		$_SESSION['nombre'] = $usuario['nombre'].' '.$usuario['apellidos'];

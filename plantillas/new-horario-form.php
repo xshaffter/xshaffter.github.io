@@ -1,9 +1,12 @@
- <form id='sched-form' action='horario-profesor.php' method='post' enctype='multipart/form-data' class='session-form flex-column-item'> 
-	<input type='text' name='aula' placeholder='aula' required='true' /> 
+ <section id='sched-form' class='session-form flex-column-item'> 
+	<input type='text' id='aula' placeholder='aula' required='true' /> 
+	<label class='middle' style="margin-left: 15px">Carrera: </label>
+	<select id="carreras" name='carrera' class='middle' style="margin-left: 15px">
+	</select>
 		<div class="flex-row-item middle">
 			<div class="flex-column-item middle">
 				<label>Semestre</label>
-				<select id="semestre" class="session-form sp">
+				<select id="semestre" class="sp">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -21,42 +24,69 @@
 				</select>
 			</div>
 		</div>
-	<input type='text' name='capacidad' placeholder='capacidad' required='true' /> 
-	<?php 
-	$id_carrera = 'carrera_elegida';
-	include_once 'carreras.php';
-	?>
-	<input type='submit' value='Iniciar'/>
-</form>
+	<input type='text' id='capacidad' placeholder='capacidad' required='true' /> 
+	<input type='button' value='Iniciar' id="submit" onclick="sub()" />
+</section>
+<form action="horario-profesor.php" method="post" id="hidden-form" style="display: none;"></form>
 	<script>
 		var semestre = document.getElementById('semestre');
-		var carrera = document.getElementById('carrera_elegida');
-		function ajax() {
-			xhr = new XMLHttpRequest();
-			xhr.open('post', 'php/getMaterias.php');
-			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			xhr.onload = function() {
-				if(xhr.status==200) {
-					var result = "";
-					var clases = (xhr.responseText.split(','));
+		var carrera = document.getElementById('carreras');
+		var materias = document.getElementById('materia');
 
-						result+= "<option selected='selected'>"+ decodeURIComponent(clases[0]) +"</option>";
-					for (var i = clases.length - 1; i >= 1; i--) {
-						if(clases[i]=='') {
+		semestre.addEventListener('change', ajax('getMaterias.php',materias, 'semestre='+semestre.value+'&carrera='+carrera.value))
+		function lCarrera() {
+			ajax('getCarreras.php',carrera, 'escuela=<?php echo $_SESSION['escuela'] ?>')
+			.then(function(){
+				ajax('getMaterias.php',materias, 'semestre='+semestre.value+'&carrera='+carrera.value)
+			})
+		}
+		function sub(){
+			var capacidad = document.getElementById('capacidad')
+			var aula = document.getElementById('aula')
+			var data=[
+				['materia', materias.value],
+				['aula', aula.value],
+				['capacidad', capacidad.value],
+				['carrera', carrera.value]
+			]
+			sendData(data)
+		}
+
+		function ajax(file, whereToPut, post) {
+			var r = fetch('http://localhost/alf/php/'+file,{
+				method: 'POST',
+				body: post,
+		 		headers: {
+		 			'Content-type': 'application/x-www-form-urlencoded'
+		 		}
+		 	})
+			.then(result=>result.text())
+			.then(responseText=>{
+					var result = "";
+					var datos = (responseText.split(';'));
+					var field = datos[0].split(',');
+					var ids = datos[1].split(',');
+					result+= "<option selected='selected' value='"+ids[0]+"'>"+ decodeURIComponent(field[0]) +"</option>";
+					for (var i = field.length - 1; i >= 1; i--) {
+						if(field[i]=='') {
 							continue;
 						}
-						result+= "<option>"+ decodeURIComponent(clases[i]) +"</option>";
+						result+= "<option value='"+ids[i]+"'>"+ decodeURIComponent(field[i]) +"</option>";
 					}
-					document.getElementById('materia').innerHTML = result;
-				}
-				if (xhr.status !== 200) {
-				    alert('Request failed.  Returned status of ' + xhr.status);
-				}
-			};
-			xhr.send("semestre="+semestre.value+"&carrera="+carrera.value);
+					whereToPut.innerHTML = result;
+			})
+			return r;
 		}
-		semestre.addEventListener('change',function(event) {
-			ajax();
-		});
-		ajax();
+		function sendData(data){
+			var form = document.getElementById('hidden-form')
+			for(var i = 0; i < data.length; i++){
+				var input = document.createElement('input')
+				input.type = 'text'
+				input.name = data[i][0]
+				input.value = data[i][1]
+				form.appendChild(input)
+			}
+			form.submit()
+		}
+		lCarrera()
 	</script>

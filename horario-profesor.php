@@ -1,12 +1,8 @@
-<?php include_once 'php/sesion.php'; ?><!DOCTYPE html>
+<?php include_once 'php/sesion.php';
+inicializar(); ?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script type="text/javascript">
-			function chargeSched() {
-			    var horario = "<?php include_once 'php/getHorario.php'; ?>";
-			}
-		</script>
 		<script src="js/schedule-reader.js"></script>
 		<script src="js/cells.js"></script>
 		<script src="js/builder-profesor.js"></script>
@@ -489,7 +485,7 @@
 			<div id="downloader"></div>
 		</div>
 		<script type="text/javascript">
-	        	sesionIniciada = <?php echo isset($_SESSION['ncontrol'])?>;
+	        	sesionIniciada = <?php echo isloged()?>;
 		</script>
 	</body>
 </html>

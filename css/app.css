@@ -72,7 +72,7 @@ body{
 
 .mid-slide{
 	display: flex;
-	padding: 20PX;
+	padding: 20px;
 	width: 100%;
 	height: 50vh;
 	min-height: 500px;	
@@ -98,7 +98,6 @@ body{
 .flex-row-item{
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
 }
 
 .flex-column-item{
@@ -107,7 +106,7 @@ body{
 }
 
 .session-form{
-	width: 50%;
+	width: 100%;
 	height: inherit;
 	align-items: center;
 	justify-content: center;
@@ -125,10 +124,15 @@ body{
 	color: #000;
 }
 
-.session-form input[type="submit"], .session-form label{
+.session-form input[type="button"],.session-form input[type="submit"], .session-form label{
+	display: flex;
+	flex-direction: column;
 	background: #000;
 	border-radius: 10px;
 	border: 1px solid #000;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 	margin: 15px;
 	width: 50%;
 	height: 60px;
@@ -157,7 +161,7 @@ body{
 .sp {
 	margin-left: 5px !important;
 }
-.middle {
+.middle, .session-form #carrera{
 	width: 50% !important;
 }
 .footer{

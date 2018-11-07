@@ -8,10 +8,11 @@ if($_POST['rango']=='Alumno'){
 	$password = $_POST['password'];
 	$confirm = $_POST['confirm'];
 	$carrera = $_POST['carrera'];
+	$escuela = $_POST['escuela'];
 	if($password == $confirm){
 		Conexion::conectar();
 		try {
-			Conexion::registroAlumno($ncontrol,$nombre, $apellidos, $password, $carrera);
+			Conexion::registroAlumno($ncontrol,$nombre, $apellidos, $password,$escuela, $carrera);
 			redirect('../');
 		} catch (Exception $e) {
 			echo "error: ".$e->getMessage();
@@ -27,10 +28,11 @@ if($_POST['rango']=='Alumno'){
 	$apellidos = $_POST['apellidos'];
 	$password = $_POST['password'];
 	$confirm = $_POST['confirm'];
+	$escuela = $_POST['escuela'];
 	if($password == $confirm){
 		Conexion::conectar();
 		try {
-			Conexion::registroMaestro($usuario,$nombre, $apellidos, $password);
+			Conexion::registroMaestro($usuario,$nombre, $apellidos, $password, $escuela);
 			redirect('../');
 		} catch (Exception $e) {
 			echo "error: ".$e->getMessage();
