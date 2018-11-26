@@ -12,6 +12,7 @@ function cerrar_sesion() {
 	remover('ncontrol');
 	remover('reprobadas');
 	remover('escuela');
+	remover('carrera');
 }
 function remover($field) {
 	if (isset($_SESSION[$field])) {
@@ -21,6 +22,7 @@ function remover($field) {
 function iniciar_sesion($usuario) {
 
 		$_SESSION['id'] = $usuario['id'];
+		$_SESSION['carrera'] = $usuario['carrera'];
 		$_SESSION['escuela'] = $usuario['Escuela'];
 		$_SESSION['usuario'] = $usuario['usuario'];
 		$_SESSION['rango'] = $usuario['rango'];

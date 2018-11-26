@@ -1,33 +1,8 @@
-#changer {
-	display: flex;
-	grid-column: 2;
-	grid-row: 2;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	animation-name: charger;
-}
-#overlay {
+#lista-maestros {
 	position: fixed;
-	width: 100%;
+	display: block;
+	background: #000;
+	z-index: 10;
 	height: 100%;
-	display: none;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 2;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	grid-template-rows: 1fr 1fr 1fr;
-	grid-template-columns: 1fr 1fr 1fr;
-}
-#class-list {
-	height: 100%;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	grid-column: 3;
-	grid-row-start: 1;
-	grid-row-end: 4;
-	animation-name: displayList;
+	width: 400px;
 }

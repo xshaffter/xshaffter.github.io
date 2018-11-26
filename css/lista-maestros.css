@@ -1,0 +1,23 @@
+* {
+	color: white;
+	text-shadow: 0 0 .2px white;
+	font-family: "robotomedium";
+}
+body {
+	background: black;
+}
+.list {
+	width: 100%;
+}
+.class-name,.semestre-title {
+	width: 100%;
+	font-weight: bold;
+}
+.class-name {
+}
+.semestre-title {
+	font-size: 20px;
+}
+.class-name:hover {
+	background: rgba(255,255,255,0.3);
+}

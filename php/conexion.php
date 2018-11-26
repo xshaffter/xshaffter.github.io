@@ -57,11 +57,11 @@ class Conexion{
 
 		$sentencia -> execute();
 	}
-	public static function getProfesor($id){
-		$sql = 'select * from usuarios where usuario = :id and rango = 2';
+	public static function getProfesor($usuario){
+		$sql = 'select * from usuarios where usuario = :usuario and rango = 2';
 		$sentencia = self::$conexion->prepare($sql);
 
-		$sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+		$sentencia->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 
 		$sentencia -> execute();
 		$resultado = $sentencia -> fetch();
@@ -127,6 +127,27 @@ class Conexion{
 
 		$sentencia -> execute();
 		$resultado = $sentencia -> fetchAll();
+		return $resultado;
+	}
+	public static function getHorariosByCareer($career){
+		$sql = 'select * from horarios where carrera = :career';
+		$sentencia = self::$conexion->prepare($sql);
+
+		$sentencia->bindParam(':career', $career, PDO::PARAM_STR);
+
+		$sentencia -> execute();
+		$resultado = $sentencia -> fetchAll();
+		for ($i=0; $i < sizeof($resultado); $i++) { 
+			$sql2 = 'select * from materias where id = :id2';
+			$sentencia2 = self::$conexion->prepare($sql2);
+
+			$sentencia2->bindParam(':id2',$resultado[$i]['materia'], PDO::PARAM_STR);
+			$sentencia2->execute();
+			$res2 = $sentencia2->fetch();
+
+			$resultado[$i]['materiaNombre'] = $res2['materia'];
+			$resultado[$i]['semestre'] = $res2['semestre'];
+		}
 		return $resultado;
 	}
 }

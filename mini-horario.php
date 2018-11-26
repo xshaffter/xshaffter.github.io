@@ -126,8 +126,8 @@
 		<div state="inactive" class="td unselectable"></div>
 		<div state="inactive" class="td unselectable"></div>
 	</div>
-	<script src="js/schedule-reader.js">
-	</script>
+	<section id="chargeID" style="display: none;"><?php echo $horario['horario']; ?></section>
+	<script src="js/environtment.js"></script>
 	<script src="js/mini-sched.js">
 	</script>
 	<script>

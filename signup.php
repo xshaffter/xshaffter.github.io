@@ -12,16 +12,16 @@
 				<input type='text' id='apellidos' placeholder='Apellidos'>
 			</div>
 			<div class="flex-column-item">
-				<input type='password' id='password' placeholder='Ingresa tu contraseña' />
-				<input type='password' id='confirm' placeholder='Confirma tu clave de registro' />
-				<input type='button' value='Registrarse' id="submit" onclick="sub()">
-			</div>
-			<div class="flex-column-item">
 				<label class="middle">Escuela: </label>
 				<select name='escuela' id='escuelas' onchange='changeEsc()' class="middle">
 					<option value="0">otra</option>
 				</select>
 				<div id="modificable" class="flex-column-item middle"></div>
+			</div>
+			<div class="flex-column-item">
+				<input type='password' id='password' placeholder='Ingresa tu contraseña' />
+				<input type='password' id='confirm' placeholder='Confirma tu clave de registro' />
+				<input type='button' value='Registrarse' id="submit" onclick="sub()">
 			</div>
 		</form>
 	</section>

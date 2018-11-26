@@ -8,7 +8,6 @@ inicializar();
 	<meta charset="UTF-8">
 	<title>Asistente de horarios</title>
 	<link rel="stylesheet" href="css/app.css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto.Slab:700" rel="stylesheet" />
 </head>
 <body>
 	<header class="main-header">
@@ -55,29 +54,31 @@ inicializar();
 		 ?>
 	</section>
 	
-	<footer class="footer flex-row-item">
-		<div class="foo-item">
-			<div class="foo-title">Version</div>
-			<div class="foo-mask">
-				<div class="foo-info">0.4.0</div>
+	<footer class="footer grid-row-list">
+		<div class="right">
+			<div class="foo-item">
+				<div class="foo-title">Version</div>
+				<div class="foo-mask">
+					<div class="foo-info">0.4.0</div>
+				</div>
 			</div>
-		</div>
-		<div class="foo-item">
-			<div class="foo-title">Repositorio</div>
-			<div class="foo-mask">
-				<div class="foo-info"><a href="https://www.github.com/xshaffter/xshaffter.github.io">GO GIT</a></div>
+			<div class="foo-item">
+				<div class="foo-title">Repositorio</div>
+				<div class="foo-mask">
+					<div class="foo-info"><a href="https://www.github.com/xshaffter/xshaffter.github.io">GO GIT</a></div>
+				</div>
 			</div>
-		</div>
-		<div class="foo-item">
-			<div class="foo-title">Arquitecto</div>
-			<div class="foo-mask">
-				<div class="foo-info">Carlos David Sanchez Moreno</div>
+			<div class="foo-item">
+				<div class="foo-title">Arquitecto</div>
+				<div class="foo-mask">
+					<div class="foo-info">Carlos David Sanchez Moreno</div>
+				</div>
 			</div>
-		</div>
-		<div class="foo-item">
-			<div class="foo-title">Programador</div>
-			<div class="foo-mask">
-				<div class="foo-info">Alfredo Antonio Martinez Armendariz</div>
+			<div class="foo-item">
+				<div class="foo-title">Programador</div>
+				<div class="foo-mask">
+					<div class="foo-info">Alfredo Antonio Martinez Armendariz</div>
+				</div>
 			</div>
 		</div>
 	</footer>

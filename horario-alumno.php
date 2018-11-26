@@ -1,63 +1,21 @@
 <?php 
-include_once 'php/sesion.php'; 
-include_once 'php/conexion.php';
-Conexion::conectar();
-$horario = Conexion::getHorario('04');
-$profesor = Conexion::getProfesor($horario['maestro']);
-$horario2 = Conexion::getHorario('06');
-$profesor2 = Conexion::getProfesor($horario2['maestro']);
-$horario3 = Conexion::getHorario('07');
-$profesor3 = Conexion::getProfesor($horario3['maestro']);
-Conexion::desconectar();
+include_once 'php/sesion.php';
+inicializar();
 ?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 
 		<title>Creador de horarios</title>
+		<link rel="stylesheet" href="css/lista-maestros.css">
 		<link rel="stylesheet" href="css/app.css" />
 		<link rel="stylesheet" href="css/fonts.css" />
 		<link rel="stylesheet" href="css/estilos.css" />
 		<link rel="stylesheet" href="css/ids.css" />
 	</head>
 	<body id="body">
-		<div id="overlay" onkeypress="onkey(event)">
-			<div id='changer'>
-				<div class="panel">
-					<div class="panel-title unselectable">
-						Ingresa los datos
-					</div>
-
-					<div class="panel-content">
-						<form action="#">
-							<input type="text" id="materia" class="input-text" placeholder="Materia" /><br><br>
-							<input type="text" id="profesor" class="input-text" placeholder="Profesor" /><br><br>
-							<label style="width:3em;">Edificio</label> <select id="edificio" class="selector"></select>
-							<label style="width:3em;">Aula</label> <select id="aula" class="selector"></select>
-							<br>
-							<input type="submit" onclick='charge()' value="aceptar" class="input-button">
-						</form>
-					</div>
-				</div>
-			</div>
-
-
-			<div id="class-list">
-				<div class="panel" style="height: 100%; width: 100%;">
-					<div class="panel-title unselectable">
-						Materias Ingresadas
-					</div>
-					<div class="panel-content" style="height: 100%">
-						<div class="lista" id="lista">
-							<div class="th-list c1 unselectable">Materia</div>
-							<div class="th-list c2 unselectable">Profesor</div>
-							<div class="th-list c3 unselectable">Aula</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div id="lista-maestros">
 		</div>
-
 		<div class="body">
 			<div class="tabla horario" id="horario">
 				<div class="th grupo unselectable" onclick="changeGroup()" id="grupo">
@@ -519,40 +477,139 @@ Conexion::desconectar();
 			</div>
 		</div>
 
-	<footer class="footer flex-row-item">
-		<div class="foo-item">
-			<div class="foo-title"><?php echo $profesor['nombre'] .' '. $profesor['apellidos']?></div>
-			<div class="foo-mask">
-				<div class="foo-info horario-mini">
-					<div class="foo-info-title">					
-						<iframe src="mini-horario.php?horario=<?php echo $horario['id'] ?>" frameborder="0"></iframe>
-					</div>
+	<footer class="footer grid-row-list">
+		<div class="left">
+			<div class="foo-item">
+				<div class="foo-title">
+					<a href="#" id="btn-maestros">materias</a>
 				</div>
 			</div>
 		</div>
-		<div class="foo-item">
-			<div class="foo-title"><?php echo $profesor2['nombre'] .' '. $profesor2['apellidos']?></div>
-			<div class="foo-mask">
-				<div class="foo-info horario-mini">
-					<div class="foo-info-title">					
-						<iframe src="mini-horario.php?horario=<?php echo $horario2['id'] ?>" frameborder="0"></iframe>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="foo-item">
-			<div class="foo-title"><?php echo $profesor3['nombre'] .' '. $profesor3['apellidos']?></div>
-			<div class="foo-mask">
-				<div class="foo-info horario-mini">
-					<div class="foo-info-title">					
-						<iframe src="mini-horario.php?horario=<?php echo $horario3['id'] ?>" frameborder="0"></iframe>
-					</div>
-				</div>
-			</div>
+		<div class="right flex-row-item" id="foo-bar">
+			
 		</div>
 	</footer>
-		<script src="js/cookies.js"></script>
-		<script src="js/cells.js"></script>
+		<script src="js/environtment.js"></script>
 		<script src="js/builder.js"></script>
+		<script>
+			function realize() {
+				var clases = "";
+				var lista = document.getElementById('lista-maestros');
+				var materiasTotal = lista.getElementsByTagName('label');
+				for (var i = 0; i < materiasTotal.length; i++) {
+					var materiaActual = materiasTotal[i];
+					if(materiaActual.getAttribute('checked')=='true'){
+						clases+=materiaActual.getAttribute('value')+',';
+					}
+				}
+				var horarios = clases.split(',');
+				var where = document.getElementById('foo-bar');
+				while (where.firstChild) {
+				    where.removeChild(where.firstChild);
+				}
+				for(var i = 0; i < horarios.length; i++) {
+					if(horarios[i]==""||horarios[i]==null) {
+						continue;
+					}
+					var post = 'horario='+horarios[i];
+					var res = ajax('getHorarioClase.php',post);
+					res.then(response=> response.text())
+					.then(responseText=>{
+						var data = responseText.split(';');
+						var foo_bar = document.getElementById('foo-bar');
+						var item = document.createElement('div');
+						var title = document.createElement('div');
+						var mask = document.createElement('div');
+						var info = document.createElement('div');
+						var info_title = document.createElement('div');
+						var frame = document.createElement('iframe');
+						item.className = "foo-item";
+						title.className = "foo-title";
+						title.innerText = data[1];
+						mask.className = "foo-mask";
+						info.className = "foo-info horario-mini";
+						info_title.className = "foo-info-title";
+						frame.src = "mini-horario.php?horario="+data[0];
+						frame.frameborder = "0";
+
+						item.appendChild(title);
+						item.appendChild(mask);
+						mask.appendChild(info);
+						info.appendChild(info_title);
+						info_title.appendChild(frame);
+						foo_bar.appendChild(item);
+					})
+				}
+			}
+			function inicializar(frame, frameID) {
+				console.log(frame)
+				console.log(frame.contentDocument)
+			    var chargeID = frame.contentDocument.getElementById('chargeID');
+			    chargeID.innerText = frameID;
+			}
+
+			realize();
+		    var sons = document.getElementsByTagName("iframe");
+		    for(var i = 0; i < sons.length; i++) {
+				inicializar(sons[i],i);
+		    }
+		</script>
+	<script>
+	function ajax2(file, whereToPut, post) {
+		var r = fetch(window.location['origin']+'/alf/php/'+file,{
+			method: 'POST',
+			body: post,
+	 		headers: {
+	 			'Content-type': 'application/x-www-form-urlencoded'
+	 		}
+	 	})
+		.then(result=>result.text())
+		.then(responseText=>{
+				var result = "";
+				var datos = (responseText.split(';'));
+				var field = datos[0].split(',');
+				var ids = datos[1].split(',');
+				var semestres = datos[2].split(',');
+				var br = document.createElement('br');
+				for(var semestreActual = 1; semestreActual < 10; semestreActual++) {
+						var label2 = document.createElement('label');
+						var ul = document.createElement('ul');
+						label2.innerText = 'semestre ' + semestreActual;
+						label2.className = "semestre-title";
+						whereToPut.appendChild(label2);
+						whereToPut.innerHTML += "<br/>";
+					for (var i = field.length - 1; i >= 0; i--) {
+						if(field[i]=='' || semestres[i]!=semestreActual) {
+							continue;
+						}
+						var label = document.createElement('label');
+						var li = document.createElement('li');
+						label.className = "class-name";
+						label.innerText = decodeURIComponent(field[i]);
+						label.href="#";
+						label.setAttribute('value',ids[i]);
+						li.appendChild(label);
+						ul.appendChild(li);
+					}
+					whereToPut.appendChild(ul);
+				}
+		})
+		return r;
+	}
+	var r = ajax2('getClases.php',document.getElementById('lista-maestros'),'');
+	r.then(function(){
+		var materias = document.getElementsByClassName('class-name');
+		for(var i = 0; i < materias.length; i++){
+			materias[i].addEventListener('click',function(event){
+				if(this.getAttribute('checked')=='true') {
+					this.setAttribute('checked','false');
+				} else {
+					this.setAttribute('checked','true');
+				}
+				realize();
+			});
+		}
+	});
+	</script>
 	</body>
 </html>

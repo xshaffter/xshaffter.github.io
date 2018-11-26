@@ -144,14 +144,12 @@ body{
 	margin: 15px;
 	width: 95%; 
 	height: 60px;
-	margin-left: 5px;
 	margin-bottom: 0;
 	border-radius: 0;
 }
 .session-form label {
 	width: 95%;
 	margin: 15px;
-	margin-left: 5px;
 	margin-bottom: 0;
 	border-radius: 0;
 }
@@ -169,7 +167,20 @@ body{
 	padding: 4px 10px;
 	background: rgba(0, 0, 0, 0.8);
 	align-items: center;
+}
+.right {
+	grid-column-start: 2;
+	grid-column-end: 9;
+	display: flex;
+	position: relative;
+	align-items: center;
 	justify-content: flex-end;
+}
+.left{
+	grid-column: 1;
+	display: flex;
+	position: relative;
+	justify-content: flex-start;
 }
 
 .form-title{
@@ -213,4 +224,8 @@ body{
 	padding: 5px;
 	margin: 0 10px;
 	border-radius: 5px;
+}
+.grid-row-list {
+	display: grid;
+	grid-template-columns: repeat(1fr,8);
 }
