@@ -1,3 +1,101 @@
+<script src="js/environtment.js"></script>
+<script>
+	var rango = document.getElementById('rango');
+	var formulario = document.getElementById('signup');
+	var escuelas = document.getElementById('escuelas');
+	function changeEsc(){
+		ajax('getCarreras.php', 'escuela='+escuelas.value)
+		.then(response=>response.text())
+		.then(responseText=>{
+			var carreras = document.getElementById('carreras');
+			var datos = (responseText.split(';'));
+			var field = datos[0].split(',');
+			var ids = datos[1].split(',');
+			removeAll(carreras);
+			for (var i = field.length - 1; i >= 0; i--) {
+				if(field[i]=='') {
+					continue;
+				}
+				var option = document.createElement('option');
+				option.setAttribute('value', ids[i]);
+				option.innerText = decodeURIComponent(field[i]);
+				carreras.appendChild(option)
+			}
+		})
+	}
+function sub(){
+}
+function readTextFile(file, where){
+	var r = fetch(window.location['origin']+'/alf/'+file)
+  .then(response => response.text())
+  .then(text => where.innerHTML = text)
+  return r
+}
+function rangoChange() {
+	var modificable = document.getElementById('modificable');
+	switch(rango.value){
+		case "Alumno":
+		readTextFile('/signup-alumno.php', modificable)
+		.then(function(){
+			ajax('getEscuelas.php', '')
+			.then(result=>result.text())
+			.then(responseText=>{
+				removeAll(escuelas);
+					var datos = (responseText.split(';'));
+					var field = datos[0].split(',');
+					var ids = datos[1].split(',');
+					for (var i = 0; i < field.length; i++) {
+						if(field[i]=='') {
+							continue;
+						}
+						var option = document.createElement('option');
+						option.setAttribute('value', ids[i]);
+						option.innerText = decodeURIComponent(field[i]);
+						escuelas.appendChild(option)
+						console.log(option)
+					}
+			})
+			.then(function(){
+				new Promise(function(){
+					ajax('getCarreras.php', 'escuela='+escuelas.value)
+					.then(response=>response.text())
+					.then(responseText=>{
+							var carreras = document.getElementById('carreras');
+							removeAll(carreras);
+							var datos = (responseText.split(';'));
+							var field = datos[0].split(',');
+							var ids = datos[1].split(',');
+							for (var i = field.length - 1; i >= 0; i--) {
+								if(field[i]=='') {
+									continue;
+								}
+								var option = document.createElement('option');
+								option.setAttribute('value', ids[i]);
+								option.innerText = decodeURIComponent(field[i]);
+								carreras.appendChild(option)
+							}
+					})
+				})
+				.catch(function(){})
+			});
+		})
+		break;
+		case "Maestro":
+		readTextFile('signup-maestro.php', modificable);
+		break;
+	}
+}
+function sendData(file, post){
+	var r = fetch(window.location['origin']+'/alf/php/'+file,{
+		method: 'POST',
+		body: post,
+ 		headers: {
+ 			'Content-type': 'application/x-www-form-urlencoded'
+ 		}
+ 	});
+	return r;
+}
+</script>
 	<section class="mid-slide flex-column-item" style="height: 100%">
 
 		<h2 class='form-title'>Registrate, es muy facil!</h2>
@@ -25,5 +123,86 @@
 			</div>
 		</form>
 	</section>
-<script src='js/signup.js'>
-</script>
+	<script>	
+		rango = document.getElementById('rango');
+		formulario = document.getElementById('signup');
+		escuelas = document.getElementById('escuelas');
+		function loadEsc(){
+			ajax('getEscuelas.php', '')
+			.then(response=>response.text())
+			.then(responseText=>{
+				removeAll(escuelas);
+				var datos = (responseText.split(';'));
+				var field = datos[0].split(',');
+				var ids = datos[1].split(',');
+				for (var i = field.length - 1; i >= 0; i--) {
+					if(field[i]=='') {
+						continue;
+					}
+					var option = document.createElement('option');
+					option.setAttribute('value', ids[i]);
+					option.innerText = decodeURIComponent(field[i]);
+					escuelas.appendChild(option)
+				}
+			})
+			.then(function(){
+					ajax('getCarreras.php', 'escuela='+escuelas.value)
+					.then(response=>response.text())
+					.then(responseText=>{
+							var carreras = document.getElementById('carreras');
+							var datos = (responseText.split(';'));
+							var field = datos[0].split(',');
+							var ids = datos[1].split(',');
+							for (var i = field.length - 1; i >= 0; i--) {
+								if(field[i]=='') {
+									continue;
+								}
+								var option = document.createElement('option');
+								option.setAttribute('value', ids[i]);
+								option.innerText = decodeURIComponent(field[i]);
+								carreras.appendChild(option)
+							}
+					})
+					.catch(function(){})
+			});
+		}
+		loadEsc();
+		function sub(){
+			var carrera = document.getElementById('carreras')
+			var usuario = document.getElementById('usuario')
+			var nombres = document.getElementById('nombres')
+			var apellidos = document.getElementById('apellidos')
+			var password = document.getElementById('password')
+			var confirm = document.getElementById('confirm')
+				sendData('registro.php', 
+					'rango='+rango.value+
+					'&escuela='+escuelas.value+
+					'&usuario='+usuario.value+
+					'&nombres='+nombres.value+
+					'&apellidos='+apellidos.value+
+					'&password='+password.value+
+					'&confirm='+confirm.value+
+					(carrera==null?'':'&carrera='+carrera.value))
+				.then(response=>response.text())
+				.then(responseText=>{
+					errores = responseText.split(';');
+					for(var i= 0; i < errores.length; i++){
+						if(errores[i]==''){
+							continue;
+						}
+						alert(errores[i]);
+					}
+					if(errores.length==0){
+						usuario.value = "";
+						nombres.value = "";
+						apellidos.value = "";
+					}
+					password.value = "";
+					confirm.value = "";
+				})
+				.then(function(){
+				})
+				.catch(function(){
+				})
+		}
+	</script>

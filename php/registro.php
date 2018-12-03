@@ -1,15 +1,11 @@
 <?php 
 include_once 'conexion.php';
 include_once 'utilidades.php';
+include_once 'validador.php';
 if($_POST['rango']=='Alumno'){
-	$ncontrol = $_POST['usuario'];
-	$nombre = $_POST['nombres'];
-	$apellidos = $_POST['apellidos'];
-	$password = $_POST['password'];
-	$confirm = $_POST['confirm'];
-	$carrera = $_POST['carrera'];
-	$escuela = $_POST['escuela'];
-	if($password == $confirm){
+	$res = implode('.', $_POST);
+	$validador = new Validador($res);
+	if($validador->noError()){
 		Conexion::conectar();
 		try {
 			Conexion::registroAlumno($ncontrol,$nombre, $apellidos, $password,$escuela, $carrera);
@@ -20,16 +16,11 @@ if($_POST['rango']=='Alumno'){
 			Conexion::desconectar();
 		}
 	} else {
-		echo $password.' != '. $confirm;
+		echo $validador->getErrores();
 	}
 } else {
-	$usuario = $_POST['usuario'];
-	$nombre = $_POST['nombres'];
-	$apellidos = $_POST['apellidos'];
-	$password = $_POST['password'];
-	$confirm = $_POST['confirm'];
-	$escuela = $_POST['escuela'];
-	if($password == $confirm){
+	$validador = new Validador($_POST);
+	if($validador->noError()){
 		Conexion::conectar();
 		try {
 			Conexion::registroMaestro($usuario,$nombre, $apellidos, $password, $escuela);
@@ -40,6 +31,6 @@ if($_POST['rango']=='Alumno'){
 			Conexion::desconectar();
 		}
 	} else {
-		echo $password.' != '. $confirm;
+		echo $validador->getErrores();
 	}
 }

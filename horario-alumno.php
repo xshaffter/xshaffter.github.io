@@ -19,25 +19,25 @@ inicializar();
 		<div class="body">
 			<div class="tabla horario" id="horario">
 				<div class="th grupo unselectable" onclick="changeGroup()" id="grupo">
-				Grupo A
+				Schedule
 				</div>
 				<div class="th unselectable">
-				Lunes
+				Monday
 				</div>
 				<div class="th unselectable">
-				Martes
+				Tuesday
 				</div>
 				<div class="th unselectable">
-				Miercoles
+				Wednesday
 				</div>
 				<div class="th unselectable">
-				Jueves
+				Thursday
 				</div>
 				<div class="th unselectable">
-				Viernes
+				Friday
 				</div>
 				<div class="th unselectable">
-				Sabado
+				Saturday
 				</div>
 				<!--(div.thorario.unselectable{$@7:00 - $@2:00}+div.td.unselectable*6>(.materia)(.profesor)(.aula))*14-->
 				<div class="thorario unselectable">7:00 - 8:00</div>
@@ -490,7 +490,101 @@ inicializar();
 		</div>
 	</footer>
 		<script src="js/environtment.js"></script>
-		<script src="js/builder.js"></script>
+		<script>
+			var shiftpressed = false;
+			var ctrlpressed = false;
+			var sesionIniciada = false;
+			var filaActual = 1;
+			var printedCells = 0;
+			var ultimaSeleccionada = "";
+			var cookieManager = new CookieManager(new CookieReader(), new CookieWriter());
+		    function setListeners() {
+		        var celdas = document.getElementsByClassName('td');
+		        var body = document.getElementById('body');
+		        var lista = document.getElementById('btn-maestros');
+
+		        for (var i = 0; i < celdas.length; i++) {
+		            celdas[i].addEventListener('contextmenu',function(event){
+		                event.preventDefault()
+		                if(this.getElementsByClassName('materia')[0].innerText!=""){
+		                    var className = this.className;
+		                    var cl = className.split(' aula-');
+		                    this.className = cl[0];
+		                    this.innerHTML = "<div class='materia'></div><div class='profesor'></div><div class='aula'></div>";
+		                    var parentSons = document.getElementsByTagName("iframe");
+		                    for(var i = 0; i < parentSons.length; i++) {
+		                        var actualFrame = parentSons[i].contentDocument;
+		                        var actualCell = actualFrame.getElementById(this.id);
+		                        actualCell.style.background = "green";
+		                        actualCell.state="active";
+		                    }
+		                }
+		            });
+		        }
+		        lista.addEventListener('click',function(event) {
+		        if(document.getElementById('lista-maestros').style.display=="none") {
+		            document.getElementById('lista-maestros').style.display="block";
+		        }
+		        });
+		        body.addEventListener('keydown',function(event){
+		            onkey(event);
+		        });
+		        body.addEventListener('keyup',function(event){
+		            onrelease(event);
+		        });
+
+		    }
+		    function setIDS() {
+		        var celdas = document.getElementsByClassName('td');
+		        for (var i = 0; i < celdas.length; i++) {
+		            var x = i+1
+		            celdas[i].id = 'cell'+x;
+		        }
+		    }
+
+		    setListeners();
+		    setIDS()
+
+			function changeGroup() {
+			    var grupo = prompt("¿A qué grupo perteneces?");
+			    var cell = document.getElementById('grupo');
+			    cell.innerText = "Grupo "+capitalize(grupo);
+			}
+
+			function onkey(e) {
+			var key = (e.keyCode ? e.keyCode : e.which);
+			    switch(key) {
+			        case 8:
+			            remove_selected();
+			            break;
+			        case 17:
+			            ctrlpressed = true;
+			            break;
+			        case 45:
+			            display();
+			            break;
+			        case 16:
+			            shiftpressed = true;
+			            break;
+			    }
+			}
+			function onrelease(e) {
+			    var key = (e.keyCode ? e.keyCode : e.which);
+			    switch(key) {
+			        case 17:
+			            ctrlpressed = false;
+			            break;
+			        case 16:
+			            shiftpressed = false;
+			            break;
+			        case 27:
+			        if(document.getElementById('lista-maestros').style.display!="none") {
+			            document.getElementById('lista-maestros').style.display="none"
+			        }
+			        break;
+			    }
+			}
+		</script>
 		<script>
 			function realize() {
 				var clases = "";
@@ -555,6 +649,26 @@ inicializar();
 		    }
 		</script>
 	<script>
+		function rmSpecified(parameter) {
+        	var celdas = document.getElementsByClassName('td');
+			for(var i = 0; i < celdas.length; i++){
+				var celda = celdas[i];
+		        if(celda.getAttribute('horario')==parameter){
+		            var className = celda.className;
+		            var cl = className.split(' aula-');
+		            celda.className = cl[0];
+		            celda.innerHTML = "<div class='materia'></div><div class='profesor'></div><div class='aula'></div>";
+				    var parentSons = document.getElementsByTagName("iframe");
+				    for(var x = 0; x < parentSons.length; x++) {
+				        var actualFrame = parentSons[x].contentDocument;
+				        var actualCell = actualFrame.getElementById(celda.id);
+				        actualCell.style.background = "green";
+				        actualCell.state="active";
+				        console.log('hola');
+			        }
+			    }
+			}
+		}
 	function ajax2(file, whereToPut, post) {
 		var r = fetch(window.location['origin']+'/alf/php/'+file,{
 			method: 'POST',
@@ -574,7 +688,7 @@ inicializar();
 				for(var semestreActual = 1; semestreActual < 10; semestreActual++) {
 						var label2 = document.createElement('label');
 						var ul = document.createElement('ul');
-						label2.innerText = 'semestre ' + semestreActual;
+						label2.innerText = 'semester ' + semestreActual;
 						label2.className = "semestre-title";
 						whereToPut.appendChild(label2);
 						whereToPut.innerHTML += "<br/>";
@@ -603,6 +717,7 @@ inicializar();
 			materias[i].addEventListener('click',function(event){
 				if(this.getAttribute('checked')=='true') {
 					this.setAttribute('checked','false');
+					rmSpecified(this.getAttribute('value'));
 				} else {
 					this.setAttribute('checked','true');
 				}
