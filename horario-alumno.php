@@ -678,7 +678,6 @@ inicializar();
 	 	})
 		.then(result=>result.text())
 		.then(responseText=>{
-				var result = "";
 				var datos = (responseText.split(';'));
 				var field = datos[0].split(',');
 				var ids = datos[1].split(',');

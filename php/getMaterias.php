@@ -7,6 +7,6 @@ $resultado = '';
 $ids = '';
 for ($i=0; $i < sizeof($materias); $i++) { 
 	$resultado = $resultado.$materias[$i]['materia'].',';
-	$ids = $resultado.$materias[$i]['id'].',';
+	$ids = $ids.$materias[$i]['id'].',';
 }
 echo utf8_encode($resultado.';'.$ids);

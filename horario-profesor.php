@@ -9,7 +9,6 @@ inicializar();
 		    var celdas = document.getElementsByClassName('td');
 			function setListeners() {
 		        var guardar = document.getElementById('btn-guardar');
-		        console.log('hola');
 		        guardar.addEventListener('click',function(){
 		        	data = '<?php echo '&id='.$_SESSION['usuario'].'&aula='. $_POST['aula'].'&cap='. $_POST['capacidad'].'&materia='.$_POST['materia'].'&carrera='. $_POST['carrera']; ?>';
 		        	var usados = 0;

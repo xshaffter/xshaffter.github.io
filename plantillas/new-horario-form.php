@@ -72,7 +72,7 @@
 							continue;
 						}
 						var option = document.createElement('option');
-						option.setAttribute('value', ids[i]);
+						option.value = ids[i];
 						option.innerText = decodeURIComponent(field[i]);
 						whereToPut.appendChild(option)
 					}
