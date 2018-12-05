@@ -8,16 +8,6 @@ function ajax(file, post) {
  	})
 	return r;
 }
-function cajax(file, post) {
-	var r = fetch(window.location['origin']+'/alf/php/'+file,{
-		method: 'POST',
-		body: post,
- 		headers: {
- 			'Content-type': 'application/x-www-form-urlencoded'
- 		}
- 	})
-	return r;
-}
 	function removeAll(element) {
 		var myNode = element;
 		while (myNode.firstChild) {
@@ -41,18 +31,21 @@ class Searcher {
 	}
 }
 function subirHorario(data, horario) {
-	xhr = new XMLHttpRequest();
+	ajax('subirHorario.php',"horario="+horario+data);
+	/*
+		xhr = new XMLHttpRequest();
 
-	xhr.open('post', 'php/subirHorario.php');
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.onload = function() {
-		if(xhr.status==200) {
-		}
-		if (xhr.status !== 200) {
-		    alert('Request failed.  Returned status of ' + xhr.status);
-		}
-	};
-	xhr.send("horario="+horario+data);
+		xhr.open('post', 'php/subirHorario.php');
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.onload = function() {
+			if(xhr.status==200) {
+			}
+			if (xhr.status !== 200) {
+			    alert('Request failed.  Returned status of ' + xhr.status);
+			}
+		};
+		xhr.send();
+	*/
 }
 
 
@@ -103,7 +96,7 @@ class JSON_ObjInterpreter {
 		var profesor = cell.getElementsByClassName('profesor')[0].innerText;
 		var materia = cell.getElementsByClassName('materia')[0].innerText;
 		var aula = cell.getElementsByClassName('aula')[0].innerText;
-		var object = {'cell':id, 'materia':materia, 'profesor':profesor, 'aula':aula};
+		var object = {cell:id, materia:materia, profesor:profesor, aula:aula};
 
 		return object;
 	}
@@ -123,46 +116,6 @@ class JSON_ObjInterpreter {
 		return celdas;
 	}
 }
-	class CookieManager{
-		constructor(cookieReader, cookieWriter) {
-			this.cookieWriter = cookieWriter;
-			this.cookieReader = cookieReader;
-		}
-		read(cname) {
-			return this.cookieReader.read(cname);
-		}
-		write(cname, value) {
-			this.cookieWriter.write();
-		}
-	}
-	class CookieReader {
-		constructor() {
-
-		}
-		read(cname) {
-		    var name = cname + "=";
-		    var decodedCookie = decodeURIComponent(unescape(document.cookie));
-		    var ca = decodedCookie.split(';');
-		    for(var i = 0; i <ca.length; i++) {
-		        var c = ca[i];
-		        while (c.charAt(0) == ' ') {
-		            c = c.substring(1);
-		        }
-		        if (c.indexOf(name) == 0) {
-		            return c.substring(name.length, c.length);
-		        }
-		    }
-		    return "";
-		}
-	}
-	class CookieWriter {
-		constructor() {
-
-		}
-		write(name, value) {
-	    	document.cookie = (escape(name) + "=" + escape(value) +"; path=/");
-		}
-	}
 	
 var hoverStyle = "1px solid orange";
 	function onMpress(id) {
@@ -248,4 +201,9 @@ function remove_selected() {
         cell.innerHTML = "<div class='materia'></div><div class='profesor'></div><div class='aula'></div><div class='mask'></div>";
         diselect(celdas[i]);
     }
+}
+function redirectToRoot(){
+	var a = document.createElement('a');
+	a.href = window.location['origin'];
+	a.click();
 }

@@ -497,7 +497,6 @@ inicializar();
 			var filaActual = 1;
 			var printedCells = 0;
 			var ultimaSeleccionada = "";
-			var cookieManager = new CookieManager(new CookieReader(), new CookieWriter());
 		    function setListeners() {
 		        var celdas = document.getElementsByClassName('td');
 		        var body = document.getElementById('body');

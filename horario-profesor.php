@@ -1,15 +1,31 @@
 <?php include_once 'php/sesion.php';
-inicializar(); ?><!DOCTYPE html>
+inicializar();
+?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="js/schedule-reader.js"></script>
 		<script src="js/environtment.js"></script>
 		<script>
-			
+		    var celdas = document.getElementsByClassName('td');
 			function setListeners() {
-		        var celdas = document.getElementsByClassName('td');
-		        var body = document.getElementById('body');
+		        var guardar = document.getElementById('btn-guardar');
+		        console.log('hola');
+		        guardar.addEventListener('click',function(){
+		        	data = '<?php echo '&id='.$_SESSION['usuario'].'&aula='. $_POST['aula'].'&cap='. $_POST['capacidad'].'&materia='.$_POST['materia'].'&carrera='. $_POST['carrera']; ?>';
+		        	var usados = 0;
+			        for (var i = 0; i < celdas.length; i++) {
+			            if(celdas[i].state=='active') {
+			            	usados++;
+			            }
+			        }
+			        if(usados>=5){
+				        new JSON_ObjInterpreter().downloadJSON(data);
+				        alert("Horario guardado");
+				        redirectToRoot();
+			        } else {
+			        	alert("Debe tener almenos 5 horas para que se pueda guardar");
+			        }
+		        });
 		        for (var i = 0; i < celdas.length; i++) {
 		            celdas[i].addEventListener('click',function(){
 		                onMpress(this.id);
@@ -21,15 +37,11 @@ inicializar(); ?><!DOCTYPE html>
 			}
 
 		    function setIDS() {
-		        var celdas = document.getElementsByClassName('td');
 		        for (var i = 0; i < celdas.length; i++) {
 		            var x = i+1
 		            celdas[i].id = 'cell'+x;
 		        }
 		    }
-
-		    setIDS();
-		    setListeners();
 			function onMpress(id) {
 				var cell = document.getElementById(id);
 				if(cell.state == "active") {
@@ -40,28 +52,16 @@ inicializar(); ?><!DOCTYPE html>
 					cell.state = "active";
 				}
 			}
-
-			function onkey(e) {
-			var key = (e.keyCode ? e.keyCode : e.which);
-			    switch(key) {
-			    }
-			}
-			function onrelease(e,data) {
-			    var key = (e.keyCode ? e.keyCode : e.which);
-			    switch(key) {
-			        case 27:
-			        new JSON_ObjInterpreter().downloadJSON(data);
-			    }
-			}
 		</script>
 
 		<title>Creador de horarios</title>
+		<link rel="stylesheet" href="css/app.css">
 		<link rel="stylesheet" href="css/estilos.css">
 		<link rel="stylesheet" href="css/sched-teacher.css">
 		<link rel="stylesheet" href="css/ids.css">
 
 	</head>
-	<body id="body" onkeyup="onrelease(event, '<?php echo '&id='.$_SESSION['usuario'].'&aula='. $_POST['aula'].'&cap='. $_POST['capacidad'].'&materia='.$_POST['materia'].'&carrera='. $_POST['carrera']; ?>')">
+	<body id="body">
 		<div class='body'>
 		<div class="tabla horario" id="horario">
 			<div class="th grupo" id="grupo">
@@ -532,8 +532,21 @@ inicializar(); ?><!DOCTYPE html>
 			<input type="file" id="archivo" onchange="readJSON()" />
 			<div id="downloader"></div>
 		</div>
+		<footer class="footer grid-row-list">
+			<div class="left">
+				<div class="foo-item">
+					<div class="foo-title">
+						<a href="#" id="btn-guardar">Guardar</a>
+					</div>
+				</div>
+			</div>
+			<div class="right flex-row-item" id="foo-bar">
+				
+			</div>
+		</footer>
 		<script type="text/javascript">
-	        	sesionIniciada = <?php echo isloged()?>;
+			    setIDS();
+			    setListeners();
 		</script>
 	</body>
 </html>

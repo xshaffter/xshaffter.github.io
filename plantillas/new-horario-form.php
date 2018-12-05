@@ -1,11 +1,11 @@
  <section id='sched-form' class='session-form flex-column-item'> 
 	<input type='text' id='aula' placeholder='aula' required='true' /> 
-	<label class='middle' style="margin-left: 15px">Carrera: </label>
+	<label class='middle' style="margin-left: 15px">Career: </label>
 	<select id="carreras" name='carrera' class='middle' style="margin-left: 15px">
 	</select>
 		<div class="flex-row-item middle">
 			<div class="flex-column-item middle">
-				<label>Semestre</label>
+				<label>Semester</label>
 				<select id="semestre" class="sp">
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -19,15 +19,16 @@
 				</select>
 			</div>
 			<div class="flex-column-item middle">
-				<label>Materia</label>
+				<label>Subject</label>
 				<select name="materia" id="materia" class="sp">
 				</select>
 			</div>
 		</div>
-	<input type='text' id='capacidad' placeholder='capacidad' required='true' /> 
-	<input type='button' value='Iniciar' id="submit" onclick="sub()" />
+	<input type='text' id='capacidad' placeholder='Capacity' required='true' /> 
+	<input type='button' value='Start' id="submit" onclick="sub()" />
 </section>
 <form action="horario-profesor.php" method="post" id="hidden-form" style="display: none;"></form>
+<script src="js/environtment.js"></script>
 	<script>
 		var semestre = document.getElementById('semestre');
 		var carrera = document.getElementById('carreras');
@@ -62,18 +63,19 @@
 		 	})
 			.then(result=>result.text())
 			.then(responseText=>{
-					var result = "";
+					removeAll(whereToPut);
 					var datos = (responseText.split(';'));
 					var field = datos[0].split(',');
 					var ids = datos[1].split(',');
-					result+= "<option selected='selected' value='"+ids[0]+"'>"+ decodeURIComponent(field[0]) +"</option>";
-					for (var i = field.length - 1; i >= 1; i--) {
+					for (var i = 0; i < field.length; i++) {
 						if(field[i]=='') {
 							continue;
 						}
-						result+= "<option value='"+ids[i]+"'>"+ decodeURIComponent(field[i]) +"</option>";
+						var option = document.createElement('option');
+						option.setAttribute('value', ids[i]);
+						option.innerText = decodeURIComponent(field[i]);
+						whereToPut.appendChild(option)
 					}
-					whereToPut.innerHTML = result;
 			})
 			return r;
 		}

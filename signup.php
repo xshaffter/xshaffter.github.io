@@ -98,21 +98,21 @@ function sendData(file, post){
 </script>
 	<section class="mid-slide flex-column-item" style="height: 100%">
 
-		<h2 class='form-title'>Registrate, es muy facil!</h2>
+		<h2 class='form-title'>sign-up!</h2>
 		<form id='signup' action='#' method='post' enctype='multipart/form-data' class='session-form flex-row-item'>
 			<div class="flex-column-item">
 				<input type='text' id='usuario' placeholder='nombre de usuario' />
 				<select id='rango' class='middle' style="margin-left: 15px" onchange="rangoChange()" >
-					<option value='Alumno'>Alumno</option>
-					<option value='Maestro' selected="s">Maestro</option>
+					<option value='Alumno'>Student</option>
+					<option value='Maestro' selected="s">Teacher</option>
 				</select>
 				<input type='text' id='nombres'placeholder='Nombre'/>
 				<input type='text' id='apellidos' placeholder='Apellidos'>
 			</div>
 			<div class="flex-column-item">
-				<label class="middle">Escuela: </label>
+				<label class="middle">School: </label>
 				<select name='escuela' id='escuelas' onchange='changeEsc()' class="middle">
-					<option value="0">otra</option>
+					<option value="0">other</option>
 				</select>
 				<div id="modificable" class="flex-column-item middle"></div>
 			</div>
@@ -150,6 +150,7 @@ function sendData(file, post){
 					.then(response=>response.text())
 					.then(responseText=>{
 							var carreras = document.getElementById('carreras');
+							removeAll(carreras);
 							var datos = (responseText.split(';'));
 							var field = datos[0].split(',');
 							var ids = datos[1].split(',');
