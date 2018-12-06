@@ -27,7 +27,7 @@ inicializar();
 		</nav>
 
 		<figure class="background-figure">
-			<img src="src/main-background.jpg" alt="" class="background-image" />
+			<img src="src/team-bg.jpg" alt="" class="background-image" />
 		</figure>
 
 		<hgroup>
@@ -46,11 +46,16 @@ inicializar();
 	 ?>
 	
 	<footer class="footer grid-row-list" <?php if(isset($_SESSION['rango'])&&$_SESSION['rango']==1){echo "style='position: fixed; bottom: 0;'";} ?>>
+		<div class="left">
+			<div class="foo-item">
+				<div class="foo-title">Oatmeal Cookies</div>
+			</div>
+		</div>
 		<div class="right">
 			<div class="foo-item">
 				<div class="foo-title">Version</div>
 				<div class="foo-mask">
-					<div class="foo-info">0.7.0</div>
+					<div class="foo-info">0.8.0.1</div>
 				</div>
 			</div>
 			<div class="foo-item">
