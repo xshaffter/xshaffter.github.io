@@ -101,13 +101,13 @@ function sendData(file, post){
 		<h2 class='form-title'>sign-up!</h2>
 		<form id='signup' action='#' method='post' enctype='multipart/form-data' class='session-form flex-row-item'>
 			<div class="flex-column-item">
-				<input type='text' id='usuario' placeholder='nombre de usuario' />
+				<input type='text' id='usuario' placeholder='username' />
 				<select id='rango' class='middle' style="margin-left: 15px" onchange="rangoChange()" >
 					<option value='Alumno'>Student</option>
 					<option value='Maestro' selected="s">Teacher</option>
 				</select>
-				<input type='text' id='nombres'placeholder='Nombre'/>
-				<input type='text' id='apellidos' placeholder='Apellidos'>
+				<input type='text' id='nombres'placeholder='First name'/>
+				<input type='text' id='apellidos' placeholder='Last name'>
 			</div>
 			<div class="flex-column-item">
 				<label class="middle">School: </label>
@@ -117,8 +117,8 @@ function sendData(file, post){
 				<div id="modificable" class="flex-column-item middle"></div>
 			</div>
 			<div class="flex-column-item">
-				<input type='password' id='password' placeholder='Ingresa tu contraseña' />
-				<input type='password' id='confirm' placeholder='Confirma tu clave de registro' />
+				<input type='password' id='password' placeholder='Password' />
+				<input type='password' id='confirm' placeholder='Confirm' />
 				<input type='button' value='Registrarse' id="submit" onclick="sub()">
 			</div>
 		</form>
@@ -193,7 +193,7 @@ function sendData(file, post){
 						}
 						alert(errores[i]);
 					}
-					if(errores.length==0){
+					if(errores.length<1){
 						usuario.value = "";
 						nombres.value = "";
 						apellidos.value = "";

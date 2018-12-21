@@ -34,7 +34,9 @@
 		var carrera = document.getElementById('carreras');
 		var materias = document.getElementById('materia');
 
-		semestre.addEventListener('change', ajax('getMaterias.php',materias, 'semestre='+semestre.value+'&carrera='+carrera.value))
+		semestre.addEventListener('change', function(){
+			ajax('getMaterias.php',materias, 'semestre='+semestre.value+'&carrera='+carrera.value)
+		})
 		function lCarrera() {
 			ajax('getCarreras.php',carrera, 'escuela=<?php echo $_SESSION['escuela'] ?>')
 			.then(function(){
